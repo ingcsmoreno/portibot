@@ -1,4 +1,4 @@
-module github.com/ingcsmoreno/portibot
+module github.com/ingcsmoreno/tweet-bot
 
 go 1.15
 

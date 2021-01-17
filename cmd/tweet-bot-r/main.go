@@ -4,10 +4,13 @@ import (
 	"fmt"
 	"log"
 	"os"
-    "github.com/dghubble/go-twitter/twitter"
-    "github.com/dghubble/oauth1"
     "os/signal"
     "syscall"
+    "math/rand"
+    "time"
+
+    "github.com/dghubble/go-twitter/twitter"
+    "github.com/dghubble/oauth1"
 )
 
 // Credentials stores all of our access/consumer tokens
@@ -47,12 +50,37 @@ func getClient(creds *Credentials) (*twitter.Client, error) {
         return nil, err
     }
 
-    log.Printf("User's ACCOUNT:\n%+v\n", user)
+    log.Printf("Logged in as User: %+v\n", user.Name)
     return client, nil
 }
 
+func generateTweetAnswer (user string) string {
+    rand.Seed(time.Now().UnixNano())
+    
+    initials := []string{
+        "Hola @%s! Listo para algo de sci-fi?", 
+        "Hola @%s! Que tal todo? Acá va algo de sci-fi", 
+        "Claro que si @%s!", 
+        "A la orden @%s!", 
+        "Hola @%s, que te pare esto?", 
+        "@%s que bueno que preguntas.",
+    }
+    
+    recommendations := []string{
+        "El monstruo de sci-fi mundialmente reconocido, Frankenstein de Mary Shelley, libraso. Si no lo leiste, recomendadísimo.",
+        "Viste 'Yo, Robot'? entonces el libro Foundación de Isaac Asimov te va a fascinar. Nota de color: pronto se va a estrenar una serie al respecto.",
+        "Solaris de Stanislaw Lem, es otra de esas obras que no pueden faltar en una biblioteca sci-fi. Tiene un par de adaptaciones al cine también.",
+        "Dune de Frank Herbert, es una novela espectacular, de la cual pronto estrenará una nueva película. Recomendadísima",
+        "Te gustan las novelas futuristas? En Neuromancer, de William Gibson, se enfrentan hackers contra una inteligencia artificial... es todo lo que voy a decir",
+        "El problema de los tres cuerpos, de Liu Cixin, cuenta la historia de una civilización luchando por sobrevivir al sistema planetario en el que viven. que tal?",
+        "El Marciano, de Andy Weir, es una obra genial sobre un astronauta que queda barado en Marte. Su adaptación al cine también fue muy buena!",
+    }
+    
+    return fmt.Sprintf(initials[rand.Intn(len(initials))] + "\n\n" + recommendations[rand.Intn(len(recommendations))], user)
+}
+
 func main() {
-    fmt.Println("Go-Twitter Bot v0.01")
+    log.Printf("Starting PortiBOT Twitter v1.0.0")
     creds := Credentials{
         AccessToken:       os.Getenv("ACCESS_TOKEN"),
         AccessTokenSecret: os.Getenv("ACCESS_TOKEN_SECRET"),
@@ -60,7 +88,7 @@ func main() {
         ConsumerSecret:    os.Getenv("CONSUMER_SECRET"),
     }
 
-    fmt.Printf("%+v\n", creds)
+    //fmt.Printf("%+v\n", creds)
 
     client, err := getClient(&creds)
     if err != nil {
@@ -68,8 +96,9 @@ func main() {
         log.Println(err)
     }
 
-     Print out the pointer to our client
-     for now so it doesn't throw errors
+    // Print out the pointer to our client
+    // for now so it doesn't throw errors
+    
     params := &twitter.StreamFilterParams{
 	    Track: []string{"#tiramescifi"},
 	    StallWarnings: twitter.Bool(true),
@@ -83,25 +112,25 @@ func main() {
 
 	demux := twitter.NewSwitchDemux()
 	demux.Tweet = func(tweet *twitter.Tweet) {
-	    fmt.Println("-----------------")
-	    fmt.Println(tweet.ID)
-	    fmt.Println(tweet.User.ScreenName)
-	    fmt.Println(tweet.Text)
+	    log.Println("-----------------")
+	    log.Println(tweet.ID)
+	    log.Println(tweet.User.ScreenName)
+	    log.Println(tweet.Text)
 
 	    tweetParams := &twitter.StatusUpdateParams{
 		    InReplyToStatusID: tweet.ID,
 		}
-		status := fmt.Sprintf("Hola @%s! listo para algo de buena ciencia ficción? (Probando de nuevo)", tweet.User.ScreenName)
-		//log.Println(status)
-	    tweet, resp, err := client.Statuses.Update(status, tweetParams)
+
+		status := generateTweetAnswer(tweet.User.ScreenName)
+		log.Println(status)
+        log.Println()
+	    
+        tweet, resp, err := client.Statuses.Update(status, tweetParams)
 	    if err != nil {
 		    log.Println(err)
 		}
 		log.Printf("%+v\n", resp)
 
-	}
-	demux.DM = func(dm *twitter.DirectMessage) {
-	    fmt.Println(dm.SenderID)
 	}
 
 	go demux.HandleChan(stream.Messages)
