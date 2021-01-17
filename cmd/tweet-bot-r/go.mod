@@ -1,4 +1,4 @@
-module github.com/ingcsmoreno/tweet-bot
+module github.com/ingcsmoreno/tweetbot-r
 
 go 1.15
 
