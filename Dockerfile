@@ -11,12 +11,13 @@ RUN zip -q -r -0 /zoneinfo.zip .
 FROM golang:1.15-alpine as builder
 
 ARG SHA1VER
+ARG APP_VER
 
 COPY cmd/tweet-bot-r /go/src
 
 WORKDIR /go/src
 
-RUN CGO_ENABLED=0 go build -ldflags="-w -s -X main.sha1ver=${SHA1VER} -X main.buildTime=`date +'%Y-%m-%d_%T'` -X main.version=v0.2.0" -o /go/bin/tweet-bot
+RUN CGO_ENABLED=0 go build -ldflags="-w -s -X main.sha1ver=${SHA1VER} -X main.buildTime=`date +'%Y-%m-%d_%T'` -X main.version=${APP_VER}" -o /go/bin/tweet-bot
 
 FROM scratch
 

@@ -45,16 +45,33 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
+      # Tags Setup
+      - name: Build args setup for Tags
+        if: startsWith( github.ref, 'ref/tags/')
+        run: |
+          echo "IMAGE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+          echo "APP_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+
+      # Branch Setup
+      - name: Build args setup for Tags
+        if: !startsWith( github.ref, 'ref/tags/')
+        run: |
+          echo "IMAGE_TAG=${GITHUB_REF#refs/head/}-latest" >> $GITHUB_ENV
+          echo "APP_VERSION=dev-branch-${GITHUB_REF#refs/head/}" >> $GITHUB_ENV
+
+
       # Build and push the image
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ingcsmoreno/tweetbot:latest
+          tags: ingcsmoreno/tweetbot:${{ env.IMAGE_TAG }}
           platforms: linux/amd64,linux/arm64,linux/arm
           build-args: |
             SHA1VER=${{ github.sha }}
+            APP_VER=${{ env.APP_VERSION }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
           
