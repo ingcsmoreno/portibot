@@ -35,16 +35,27 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
+      -
+        name: Docker Buildx (push)
+        run: |
+          docker buildx build \
+            --cache-from "type=local,src=/tmp/.buildx-cache" \
+            --platform linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x \
+            --output "type=image,push=true" \
+            --build-arg SHA1VER=${{ env.GITHUB_SHA }} \
+            --tag ingcsmoreno/tweetbot:latest \
+            .
+
       # Build and push the image
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: ingcsmoreno/tweetbot:latest
-          platforms: linux/amd64,linux/arm64,linux/arm
-          build-args: |
-            SHA1VER=${{ env.GITHUB_SHA }}
+      #- name: Build and push
+      #  id: docker_build
+      #  uses: docker/build-push-action@v2
+      #  with:
+      #    push: true
+      #    tags: ingcsmoreno/tweetbot:latest
+      #    platforms: linux/amd64,linux/arm64,linux/arm
+      #    build-args: |
+      #      SHA1VER=${{ env.GITHUB_SHA }}
           
       # Prints out the image digest
       - name: Image digest
