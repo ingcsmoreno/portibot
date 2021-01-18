@@ -46,7 +46,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
       # Tags Setup
-      - name: Build args setup for Branches
+      - name: Build args setup for Tags
         if: ${{ startsWith(github.ref, 'ref/tags/') }}
         run: |
           echo "IMAGE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
@@ -54,13 +54,11 @@ jobs:
 
 
       # Branch Setup
-      - name: Build args setup for Tags
+      - name: Build args setup for Branches
         if: ${{ !startsWith(github.ref, 'ref/tags/') }}
-        env: 
-          IMAGE_TAG: "${GITHUB_REF#refs/head/}-latest"
-          APP_VERSION: "dev-branch-${GITHUB_REF#refs/head/}"
         run: |
-          echo $APP_VERSION
+          echo "IMAGE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+          echo "APP_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
 
       # Build and push the image
