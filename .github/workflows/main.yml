@@ -44,7 +44,7 @@ jobs:
           tags: ingcsmoreno/tweetbot:latest
           platforms: linux/amd64,linux/arm64,linux/arm
           build-args: |
-            SHA1VER=$GITHUB_SHA
+            SHA1VER=${{ env.GITHUB_SHA }}
           
       # Prints out the image digest
       - name: Image digest
