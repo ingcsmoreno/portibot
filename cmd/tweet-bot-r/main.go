@@ -89,6 +89,7 @@ func main() {
     log.Printf("Initiating Tweet-bot (Recomm) %s", version)
     log.Printf(" * Commit: %s", sha1ver)
     log.Printf(" * Build Date: %s", buildTime)
+    log.Printf("Signing in to Twitter.")
     creds := Credentials{
         AccessToken:       os.Getenv("ACCESS_TOKEN"),
         AccessTokenSecret: os.Getenv("ACCESS_TOKEN_SECRET"),
@@ -120,24 +121,31 @@ func main() {
 
 	demux := twitter.NewSwitchDemux()
 	demux.Tweet = func(tweet *twitter.Tweet) {
+        // Received tweet info
 	    log.Println("-----------------")
-	    log.Println(tweet.ID)
-	    log.Println(tweet.User.ScreenName)
-	    log.Println(tweet.Text)
+	    log.Printf("Tweet ID: %d\n", tweet.ID)
+	    log.Printf("User: %s\n", tweet.User.ScreenName)
+	    log.Printf("Tweet Text: %s\n", tweet.Text)
 
-	    tweetParams := &twitter.StatusUpdateParams{
-		    InReplyToStatusID: tweet.ID,
-		}
-
-		status := generateTweetAnswer(tweet.User.ScreenName)
-		log.Println(status)
-        log.Println()
+        // Tweet response text
+		answer := generateTweetAnswer(tweet.User.ScreenName)
+		log.Printf("Tweet Answer: %s\n", answer)
 	    
-        tweet, resp, err := client.Statuses.Update(status, tweetParams)
+        // Responding tweet
+	    tweetParams := &twitter.StatusUpdateParams{InReplyToStatusID: tweet.ID}
+        _, resp, err := client.Statuses.Update(answer, tweetParams)
 	    if err != nil {
-		    log.Println(err)
+		    log.Printf("Statuses.Tweet error %v", err)
 		}
-		log.Printf("%+v\n", resp)
+		log.Printf("Tweet Status Code: %d\n", resp.StatusCode)
+
+        // Retweeting the original tweet
+        retweetParams := &twitter.StatusRetweetParams{TrimUser: twitter.Bool(true)}
+        _, retweetResponse, err := client.Statuses.Retweet(tweet.ID, retweetParams)
+        if err != nil {
+            log.Printf("Statuses.Retweet error %v", err)
+        }
+        log.Printf("Retweet Status Code: %d\n\n", retweetResponse.StatusCode)
 
 	}
 
