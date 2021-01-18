@@ -97,8 +97,6 @@ func main() {
         ConsumerSecret:    os.Getenv("CONSUMER_SECRET"),
     }
 
-    //fmt.Printf("%+v\n", creds)
-
     client, err := getClient(&creds)
     if err != nil {
         log.Println("Error getting Twitter Client")
@@ -117,6 +115,8 @@ func main() {
 
     // Print out the pointer to our client
     // for now so it doesn't throw errors
+
+    log.Println("Stream reading started")
     
     params := &twitter.StreamFilterParams{
 	    Track: []string{"#tiramescifi"},
@@ -169,6 +169,7 @@ func main() {
 	signal.Notify(ch, syscall.SIGINT, syscall.SIGTERM)
 	log.Println(<-ch)
 	
+    log.Println("Stream reading stoped")
 	stream.Stop()
 
 }
