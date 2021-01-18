@@ -7,7 +7,7 @@ The goal behind this tweeter bot is to give tweeter users the oportunity of aski
 
 ## Building the Image
 
-Simply run `docker build -t tweet-bot .` to get the binary compiled and generated.
+Simply run ```docker build --build-arg SHA1VER=`git rev-parse HEAD` -t tweet-bot .``` to get the binary compiled and generated.
 
 ## Running the bot
 

@@ -13,6 +13,12 @@ import (
     "github.com/dghubble/oauth1"
 )
 
+var (
+    version   string // version number
+    sha1ver   string // sha1 revision used to build the program
+    buildTime string // when the executable was built
+)
+
 // Credentials stores all of our access/consumer tokens
 // and secret keys needed for authentication against
 // the twitter REST API.
@@ -80,7 +86,9 @@ func generateTweetAnswer (user string) string {
 }
 
 func main() {
-    log.Printf("Starting PortiBOT Twitter v1.0.0")
+    log.Printf("Initiating Tweet-bot (Recomm) %s", version)
+    log.Printf(" * Commit: %s", sha1ver)
+    log.Printf(" * Build Date: %s", buildTime)
     creds := Credentials{
         AccessToken:       os.Getenv("ACCESS_TOKEN"),
         AccessTokenSecret: os.Getenv("ACCESS_TOKEN_SECRET"),
