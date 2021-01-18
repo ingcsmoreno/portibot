@@ -104,6 +104,16 @@ func main() {
         log.Println("Error getting Twitter Client")
         log.Println(err)
     }
+    
+    // Verify Credentials
+    verifyParams := &twitter.AccountVerifyParams{
+        SkipStatus:   twitter.Bool(true),
+        IncludeEmail: twitter.Bool(true),
+    }
+    user, _, err := client.Accounts.VerifyCredentials(verifyParams)
+    if err != nil {
+        log.Printf("Login error %v", err)
+    }
 
     // Print out the pointer to our client
     // for now so it doesn't throw errors
@@ -121,6 +131,9 @@ func main() {
 
 	demux := twitter.NewSwitchDemux()
 	demux.Tweet = func(tweet *twitter.Tweet) {
+        // Avoid processing own tweets
+        if ( tweet.User.ScreenName == user.ScreenName) { return }
+
         // Received tweet info
 	    log.Println("-----------------")
 	    log.Printf("Tweet ID: %d\n", tweet.ID)
