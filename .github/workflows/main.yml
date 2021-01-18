@@ -57,8 +57,8 @@ jobs:
       - name: Build args setup for Branches
         if: ${{ !startsWith(github.ref, 'ref/tags/') }}
         run: |
-          echo "IMAGE_TAG=${GITHUB_REF#refs/head/}-latest" >> $GITHUB_ENV
-          echo "APP_VERSION=dev-branch-${GITHUB_REF#refs/head/}" >> $GITHUB_ENV
+          echo "IMAGE_TAG=${GITHUB_REF#refs/heads/}-latest" >> $GITHUB_ENV
+          echo "APP_VERSION=dev-branch-${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
 
 
       # Build and push the image
