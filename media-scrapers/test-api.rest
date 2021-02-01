@@ -1,0 +1,48 @@
+POST http://localhost:2480/batch/portico HTTP/1.1
+content-type: application/json
+Accept-Encoding: gzip,deflate
+Content-Length: 352
+#Set-Cookie: OSESSIONID=OS1612042313456-2806302579481805367; Path=/; HttpOnly;SameSite=Strict;
+Authorization: Basic admin:admin
+
+{ "transaction" : true,
+  "operations" : [
+    {
+      "type" : "script",
+      "language" : "sql",
+      "script" : [ 
+                 "
+                BEGIN;
+LET libro = SELECT from Libro where titulo = 'Ubik';
+if ($libro.size() = 0) {
+	LET libro = CREATE VERTEX Libro SET titulo = 'Ubik';
+}
+LET autor = SELECT from Autor where nombre = 'Philip K. Dick';
+if ($autor.size() = 0) {
+	LET autor = CREATE VERTEX Autor SET nombre = 'Philip K. Dick';
+}
+LET autorDe = match
+				{class:Autor, as: a, where: (nombre = 'Philip K. Dick')}.out('autorDe') 
+				{class:Libro, as: l, where: (titulo = 'Ubik')} return a;
+if ($autorDe.size() = 0) {
+	CREATE EDGE autorDe FROM $autor TO $libro RETRY 100;
+}
+COMMIT;
+                "]
+    }
+  ]
+}
+
+
+
+# { "transaction" : true,
+#   "operations" : [
+#     {
+#       "type" : "script",
+#       "language" : "sql",
+#       "script" : [ "LET libro = CREATE VERTEX Libro SET titulo = 'Felis Arcana'",
+#                    "LET autor = CREATE VERTEX Autor SET nombre = 'Martin Casatti'",
+#                    "CREATE EDGE autorDe FROM $autor TO $libro RETRY 100" ]
+#     }
+#   ]
+# }

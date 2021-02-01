@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        
+        <meta name="description" content="Web de la Biblioteca Digital del Proyecto Scriptorium. Más libros, más libres">
+        <meta name="keywords" content="Epublibre, EPL, libros, libres, EPUB, biblioteca, Scriptorium">
+		<meta name="author" content="Epublibre">
+		<title>epublibre - Ready Player One</title>
+        <meta name="robots" content="noindex, nofollow"><meta name="googlebot" content="noindex, nofollow">        
+		<link rel="shortcut icon" href="https://www.epublibre.org/img/favicon2.ico">
+        <link rel="stylesheet" href="ready-player-one_files/bootstrap.css">
+		
+		<link href="ready-player-one_files/jquery.css" rel="stylesheet">
+		<link rel="stylesheet" href="ready-player-one_files/base.css">
+        <link rel="stylesheet" href="ready-player-one_files/sprites.css">
+        <script src="ready-player-one_files/jquery-1.js"></script>
+		<script src="ready-player-one_files/bootstrap.js"></script>
+        
+		<script type="text/javascript">
+		
+		function loadjscssfile(filename, filetype){
+			if (filetype=="js"){ 
+				var fileref=document.createElement('script');
+				fileref.setAttribute("type","text/javascript");
+				fileref.setAttribute("src", filename);
+			}
+			else if (filetype=="css"){
+				var fileref=document.createElement("link");
+				fileref.setAttribute("rel", "stylesheet");
+				fileref.setAttribute("type", "text/css");
+				fileref.setAttribute("href", filename);
+			}
+			if (typeof fileref!="undefined")
+				document.getElementsByTagName("head")[0].appendChild(fileref);
+		}
+		
+		
+		if (document.all && document.documentMode) {
+			loadjscssfile("https://www.epublibre.org/css/ie.css", "css");
+		}
+		</script>
+    </head>
+
+    <body class="wysihtml5-supported">
+		
+		<div class="container">
+			
+			
+			
+<div class="row">
+	<div class="span12">
+		<div class="ali_derecha pad_t negrita">
+			<a href="https://www.epublibre.org/usuario/cuenta" class="no_subrayar"><i class="icon-user icon-white"></i> mi cuenta</a>&nbsp; &nbsp; &nbsp;<a href="https://www.epublibre.org/acceso/salir" class="no_subrayar"><i class="icon-off icon-white"></i> salir</a>		</div>
+	</div>
+</div>
+
+
+
+<div class="row">
+
+	
+	<div class="span2" style="position:relative;">
+        <a href="https://www.epublibre.org/inicio/index"><img class="sprite logo" src="ready-player-one_files/vacio_002.png" alt="epublibre" align="top"></a>	</div>
+	<div class="span2 txt_pequena txt_blanco pad_t_15">
+		más libros, más libres
+	</div>
+	
+	
+	
+	<div class="span6">
+	<div class="menu ali_derecha">
+		<a href="https://www.epublibre.org/catalogo/novedades">novedades</a>&nbsp;&nbsp;<a href="https://www.epublibre.org/catalogo/index">catálogo</a>&nbsp;&nbsp;<a href="https://www.epublibre.org/catalogo_col/index">colecciones</a>&nbsp;&nbsp;<a href="https://www.epublibre.org/directorio/index">directorio</a>&nbsp;&nbsp;<a href="https://www.epublibre.org/manual/index">manuales</a>&nbsp;&nbsp;<a href="https://www.epublibre.org/foro">foro</a>	</div>
+</div>	
+	
+    
+    <div class="span2 margen_b_5">
+        <div class="pad_t">
+            <form action="https://www.epublibre.org/catalogo/index" method="post" accept-charset="utf-8"><div style="display:none">
+<input type="hidden" name="csrf_test_name" value="ee706ce8d9432553799cf7aa7d8954ed">
+</div>            <div class="input-append">
+                <input class="input-small busca_inverse" id="bus" name="bus" type="text" placeholder="título, autor, colección" autocomplete="off" onblur="javascript:cambiar2();" onfocus="javascript:cambiar();">
+                <button id="buscador_btn" class="btn btn-small btn-inverse" type="submit" onblur="javascript:cambiar2();" onfocus="javascript:cambiar();"><i id="buscador_icon" class="icon-search icon-white"></i></button>
+            </div>
+            </form>        </div>
+    </div>
+    
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	function cambiar() {
+		document.getElementById('buscador_btn').className = 'btn btn-small btn-primary';
+		document.getElementById('buscador_icon').className = 'icon-search';
+	}
+	function cambiar2() {
+		document.getElementById('buscador_btn').className = 'btn btn-small btn-inverse';
+		document.getElementById('buscador_icon').className = 'icon-search icon-white';
+	}
+</script>
+			
+			
+			
+			
+<div class="cab_detalle">
+	<style>
+	#tabla_porcentajes_votos {width:400px;margin:auto;margin-bottom:40px;border-collapse:collapse;border:none;}
+	#tabla_porcentajes_votos .votos-totales {text-align:center;}
+	#tabla_porcentajes_votos .celda-barra {text-align:center;vertical-align:bottom;width:10%;font-size:0.85em;}
+	#tabla_porcentajes_votos .porcentaje {margin-bottom:3px;}
+	#tabla_porcentajes_votos .barra {width:25px;margin:auto;background-color:#36e939;box-shadow: inset -1px 0px 2px 1px #02a515;}
+	#tabla_porcentajes_votos tr.linea-puntos {border-top:1px solid #888;}
+	#tabla_porcentajes_votos .celda-puntos {text-align:center;font-weight:bold;font-size:0.9em;}
+</style>
+<div class="row">
+  
+    
+    <div class="cont-ampl-portada">
+        <div id="cont_portada" class="txt_pequena ali_centro ampl-portada" style="display:none;">
+            <img id="img_portada_ampl" onclick="javascript:reducir()" src="ready-player-one_files/EfMc5p7.jpg" alt="" width="100%" height="100%">
+        </div>
+    </div>
+	
+	<div class="span2">
+        <div class="portada-libro">
+            <!--<div class="texto-portada">
+                <h2>Ernest Cline<br></h2>
+                <h1>Ready Player One</h1>
+            </div>-->
+            <div class="portada-libro">
+                <img id="portada" src="ready-player-one_files/EfMc5p7.jpg" alt="" rel="tooltip" class="red-portada" onclick="javascript:ampliar();" data-original-title="Haz click para ampliar" width="140" height="210">
+            </div>
+        </div>
+		<div class="etiqueta3"><img class="sprite estado-3" rel="tooltip" src="ready-player-one_files/vacio_002.png" data-original-title="Verificado"></div>
+	</div>
+	
+	
+	
+	<div class="span8 pad_t_20">
+		<div class="well_black pad txt_blanco" style="min-height:45px;">
+			<div style="float:left;">
+				<div class="det_titulo" id="titulo_libro" style="display:inline-block;">
+					Ready Player One				</div>
+				<br>
+				<div class="negrita aut_sec" style="display:inline-block;">
+					<a href="https://www.epublibre.org/autor/index/539">Ernest Cline</a>				</div>
+			</div>
+			<div class="negrita" style="display:inline;float:right;text-align:center;font-size:13px;">
+                <a href="https://www.epublibre.org/catalogo/index/0/nuevo/todos/sin/1">
+                    <div style="vertical-align:text-top;" class="sprite idioma_1"></div><br>
+                    <span class="txt_blanco">Español</span>
+                </a>
+			</div>
+		</div>
+		<div class="txt_blanco">
+            <div style="height:54px;min-height:40px;width:620px;margin-top:-10px;">
+                
+                <div style="float:left;width:70%;padding-right:0%;">
+	<table style="font-size:12px;">
+		<tbody><tr>
+			<td>Páginas:</td>
+			<td><span class="well_blue btn-small negrita celda-info">408</span></td>
+			<td class="pad_l_5">
+				Actualizado el:</td><td><span class="well_blue btn-small negrita">17-12-2018</span>			</td>
+				                    <td class="pad_l_5">Publicado en:</td>
+                    <td><span class="well_blue btn-small negrita">2011</span></td>
+						</tr>
+		<tr>
+			<td>Revisión:</td>
+			<td><span class="well_blue btn-small negrita celda-info">2.4</span></td>
+			<td class="pad_l_5">Estado:</td><td><span class="well_blue btn-small negrita celda-info" style="width:64px;">Verificado</span></td>			<td colspan="2" class="ali_derecha">
+							</td>
+		</tr>
+	</tbody></table>
+</div>                
+                
+                <div style="float:right;width:30%;padding-right:0%;text-align:right;">
+                	                </div>
+                
+            </div>
+            
+                            <div class="borde-derecha">
+                    <div class="avatar50 borde-portada">
+                        <img id="avatar50" src="ready-player-one_files/titi.jpg" alt="Titivillus" rel="tooltip" data-original-title="Responsable: Titivillus">
+                    </div>
+                </div>
+                        
+            <div class="agradecimientos">
+                   
+                    
+                    <div class="gracias" id="gracias">
+                                                    <a href="" id="stk" class="btn btn-tiny btn-inverse btn-block" style="width:80px;height:20px;margin-top:5px;" onclick="javascript:gracias();" role="button" data-toggle="modal" rel="tooltip" data-original-title="Dar las gracias al editor por el libro">Agradecer</a>
+                                            </div>
+                    
+                    
+                    <div id="num_gracias" style="margin-top:2px;">
+                                                    <span class="label label-info" id="stk" rel="tooltip" style="padding-top:3px;" data-original-title="Agradecimientos recibidos">
+                                <img class="sprite icon-thumb-up" src="ready-player-one_files/vacio_002.png">
+                                840                            </span>
+                                            </div>
+                    
+                            </div>
+        </div>
+        <div>
+                            <div class="btn-toolbar2" style="display:inline-block;">
+                                            <div class="btn-group">
+                                                                                                                        
+                                                                    <a href="magnet:?xt=urn:btih:D5826C8174EFEDA5059F0F6F48C1706F28170A6B&amp;dn=EPL_Ready_Player_One&amp;tr=http://tracker.tfile.me/announce&amp;tr=udp://tracker.opentrackr.org:1337/announce&amp;tr=udp://tracker.openbittorrent.com:80&amp;tr=udp://tracker.publicbt.com:80&amp;tr=udp://open.demonii.com:1337/announce" id="en_desc" class="btn btn-small btn-success">
+										<i class="icon-magnet icon-white"></i> Descargar (magnet link)
+									</a>
+                                                                                    </div>
+                        
+                        <div class="pull-right info-descargas">
+                            <a href="#" class="btn btn-tiny btn-inverse" onclick="javascript:$('#info_desc').toggle('slow');return false;">¿No sabes cómo descargar?</a>
+                            <div id="info_desc" class="well_black txt_mediana txt_blanco desplegable-info">
+                                <div class="interior_aviso">
+                                    <p>Nuestros libros se descargan 
+mediante enlaces magnet. Necesitas tener instalado en tu equipo un 
+programa torrent para la descarga. Algunos de los programas que puedes 
+usar son:</p>
+                                    <ul class="negrita en_linea">
+                                        <li><a href="http://www.qbittorrent.org/" target="_blank">qBittorrent</a></li>
+                                        <li><a href="http://www.utorrent.com/" target="_blank">uTorrent</a></li>
+                                        <li><a href="http://www.transmissionbt.com/" target="_blank">Transmission</a></li>
+                                        <li><a href="http://www.vuze.com/" target="_blank">Vuze</a></li>
+                                    </ul>
+                                    <p>Alternativamente, puedes utilizar
+ alguno de estos servicios web (copia el magnet link con el botón 
+derecho y pégalo donde corresponda):</p>
+                                    <ul class="en_linea">
+                                        <li><a class="negrita" href="#modal_demagnetize" data-toggle="modal">demagnetize</a></li>
+                                        <li><a class="negrita" href="http://put.io/" target="_blank">put.io</a> (*)</li>
+                                        <li><a class="negrita" href="http://filestream.me/" target="_blank">filestream.me</a> (*)</li>
+                                        <li>(*) Necesitan registrarse previamente en su página web.</li>
+                                    </ul>
+                                    <p>Más información sobre los enlaces magnet <a href="https://www.epublibre.org/foro/viewtopic.php?f=8&amp;t=266" target="_blank">aquí</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                                        
+                                    </div>
+                                        <div class="contenedor-social">
+                                        <a target="_blank" href="http://facebook.com/sharer.php?s=100&amp;p[url]=https://www.epublibre.org/libro/detalle/627&amp;p[title]=Ready+Player+One%20de%20Ernest+Cline&amp;p[summary]=Estamos+en+el+a%C3%B1o+2044+y%2C+como+el+resto+de+la+humanidad%2C+Wade+Watts+prefiere+mil+veces+el+videojuego+de+OASIS+al+cada+vez+m%C3%A1s+sombr%C3%ADo+mundo+real.+Se+afirma+que+esconde+las+piezas+de+un+rompecabezas+diab%C3%B3lico+cuya+resoluci%C3%B3n+conduce+a+una+fortuna+incalculable.+Durante+a%C3%B1os%2C+millones+de+humanos+han+in...&amp;p[images][0]=http%3A%2F%2Fi.imgur.com%2FEfMc5p7.jpg">
+                        <div class="sprite social-facebook" id="stk" rel="tooltip" data-original-title="Compartir en Facebook"></div>
+                    </a>
+                    <a target="_blank" href="http://twitter.com/intent/tweet?url=https://www.epublibre.org/libro/detalle/627&amp;text=Ready+Player+One%20de%20Ernest+Cline">
+                        <div class="sprite social-twitter" id="stk" rel="tooltip" data-original-title="Compartir en Twitter"></div>
+                    </a>
+                    <a target="_blank" class="social-googleplus" href="https://plus.google.com/share?url=https://www.epublibre.org/libro/detalle/627">
+                        <div class="sprite social-google" id="stk" rel="tooltip" data-original-title="Compartir en Google Plus"></div>
+                    </a>
+                </div>
+                    </div>
+	</div>
+	
+	
+	
+	<div class="span2">
+		<div class="margen_17-l">
+			
+			
+							<div class="well_orange ali_centro pad_8" id="lecturas">
+					<a href="https://www.epublibre.org/" name="lect" rel="tooltip" id="stk" onclick="javascript:marcar('leer','1')" data-original-title="lo quiero leer"><i class="icon-map-marker icon-white"></i></a>&nbsp;<a href="https://www.epublibre.org/" name="lect" rel="tooltip" id="stk" onclick="javascript:marcar('leer','2')" data-original-title="lo estoy leyendo"><i class="icon-eye-open icon-white"></i></a>&nbsp;<a href="https://www.epublibre.org/" name="lect" rel="tooltip" id="stk" onclick="javascript:marcar('leer','3')" data-original-title="lo he leido"><i class="icon-eye-close icon-white"></i></a>&nbsp;<a href="https://www.epublibre.org/" name="lect" rel="tooltip" id="stk" onclick="javascript:marcar('posesion','1')" data-original-title="lo tengo"><i class="icon-screenshot icon-white"></i></a><a href="https://www.epublibre.org/" name="lect" rel="tooltip" id="stk" onclick="javascript:marcar('posesion_papel','1')" data-original-title="lo tengo en papel"><i class="icon-book icon-white"></i></a>&nbsp;				</div>
+						
+			
+			
+			<div id="cont_puntuacion" class="well_orange ali_centro txt_blanco negrita ali_centro">
+                <div id="barra_puntuacion">
+                                                <span class="star-rating-control"><div class="rating-cancel" style="display: none;"><a title="Cancel Rating"></a></div><div class="star-rating rater-0 star-radio star-rating-applied star-rating-live star-rating-on"><a title="1">1</a></div><div class="star-rating rater-0 star-radio star-rating-applied star-rating-live star-rating-on"><a title="2">2</a></div><div class="star-rating rater-0 star-radio star-rating-applied star-rating-live star-rating-on"><a title="3">3</a></div><div class="star-rating rater-0 star-radio star-rating-applied star-rating-live star-rating-on"><a title="4">4</a></div><div class="star-rating rater-0 star-radio star-rating-applied star-rating-live star-rating-on"><a title="5">5</a></div><div class="star-rating rater-0 star-radio star-rating-applied star-rating-live star-rating-on"><a title="6">6</a></div><div class="star-rating rater-0 star-radio star-rating-applied star-rating-live star-rating-on"><a title="7">7</a></div><div class="star-rating rater-0 star-radio star-rating-applied star-rating-live star-rating-on"><a title="8">8</a></div><div class="star-rating rater-0 star-radio star-rating-applied star-rating-live star-rating-on"><a title="9">9</a></div><div class="star-rating rater-0 star-radio star-rating-applied star-rating-live"><a title="10">10</a></div></span><input class="star-radio star-rating-applied" type="radio" name="rating" value="1" style="display: none;">
+                                                                        <input class="star-radio star-rating-applied" type="radio" name="rating" value="2" style="display: none;">
+                                                                        <input class="star-radio star-rating-applied" type="radio" name="rating" value="3" style="display: none;">
+                                                                        <input class="star-radio star-rating-applied" type="radio" name="rating" value="4" style="display: none;">
+                                                                        <input class="star-radio star-rating-applied" type="radio" name="rating" value="5" style="display: none;">
+                                                                        <input class="star-radio star-rating-applied" type="radio" name="rating" value="6" style="display: none;">
+                                                                        <input class="star-radio star-rating-applied" type="radio" name="rating" value="7" style="display: none;">
+                                                                        <input class="star-radio star-rating-applied" type="radio" name="rating" value="8" style="display: none;">
+                                                                        <input class="star-radio star-rating-applied" type="radio" name="rating" value="9" checked="checked" style="display: none;">
+                                                                        <input class="star-radio star-rating-applied" type="radio" name="rating" value="10" style="display: none;">
+                                                                <br><a href="#modal_info_votos" data-toggle="modal" class="btn btn-tiny btn-inverse" role="button" rel="tooltip" data-original-title="Ver info detallada de los votos"><span id="msgVotos" style="font-weight:300">867 votos</span></a>                </div>
+				<div id="puntuacion_detallada" style="display:none;position:absolute;bottom:2px;left:2px;">
+					<a id="stk" href="#modal_info_votos" class="btn btn-tiny btn-inverse" role="button" data-toggle="modal" rel="tooltip" data-original-title="Ver info detallada de los votos">
+						<i class="icon-eye-open icon-white"></i>
+					</a>
+				</div>
+                				<div id="loading" style="clear:both;"></div>
+			</div>
+			
+            
+            
+							<div class="well well-gray pad_5">
+                        <div class="pull-left">
+                            <a href="https://www.epublibre.org/libro/erratas/informes_erratas/627/pendientes" class="no_subrayar"><i class="icon-edit icon-white" rel="tooltip" data-original-title="Avisos pendientes de corregir"></i> <span class="badge badge-important">2</span></a>                        </div>
+                        <div class="pull-right">
+                            <a href="https://www.epublibre.org/libro/erratas/informes_erratas/627/corregidas" class="no_subrayar"><i class="icon-check icon-white" rel="tooltip" data-original-title="Avisos corregidos"></i> <span class="badge badge-success">32</span></a>                        </div>
+                        <a href="#modal_erratas" id="stk" class="btn btn-tiny btn-inverse btn-block" role="button" data-toggle="modal" rel="tooltip" data-original-title="Avisar de problemas con la descarga o informar de erratas">Avisos y erratas</a>
+				</div>
+									
+		</div>
+	</div>
+	
+	
+</div>
+
+
+<div id="modal_erratas" class="modal modal-info erratas hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h4 id="myModalLabel" style="margin-bottom:0px;">Envío de aviso para "Ready Player One"<span id="load2"></span></h4>
+	</div>
+	<form action="https://www.epublibre.org/libro/enviar_errata_ajax" method="post" accept-charset="utf-8" class="form-inline" id="myform"><div style="display:none">
+<input type="hidden" name="csrf_test_name" value="ee706ce8d9432553799cf7aa7d8954ed">
+</div>	<div class="modal-body">
+		<input type="hidden" name="epl_id" id="txt_libro" value="627">
+        <div class="row-fluid">
+            
+            <div class="span7">
+                <div class="control-group">
+                    <label for="tipo">Tipo informe a enviar</label>                    <select id="txt_tipo_errata" onchange="javascript:tipo(this.value);" name="txt_tipo_errata" class="input-large">
+                        <option value="ne" selected="selected">&nbsp;</option>
+                        <option value="ficha">Errata en ficha</option>
+                        <option value="libro">Errata en libro</option>
+                        <option value="enlace">Problema con descarga</option>
+                    </select>
+                  </div>
+            </div>
+            
+            
+            <div class="span5" id="vers_errata" style="display:none;">
+                <div class="control-group pull-right">
+                    <label for="version">Versión del libro</label>                                        <select id="txt_version" name="txt_version" class="input-mini">
+                    <option value="1.0">1.0</option><option value="1.1">1.1</option><option value="1.2">1.2</option><option value="1.3">1.3</option><option value="1.4">1.4</option><option value="1.5">1.5</option><option value="1.6">1.6</option><option value="1.7">1.7</option><option value="1.8">1.8</option><option value="1.9">1.9</option><option value="2.0">2.0</option><option value="2.1">2.1</option><option value="2.2">2.2</option><option value="2.3">2.3</option><option value="2.4" selected="selected">2.4</option>                    </select>
+                </div>
+            </div>
+            
+            <div id="error_tipo" style="display:none;margin-top:-5px;margin-bottom:5px;" class="alert alert-error margen_t_10 ajustado_cont">
+                <img class="sprite icon-warning" src="ready-player-one_files/vacio_002.png"> Es necesario especificar el tipo de informe.
+            </div>
+        </div>
+        
+        <div class="control-group">
+			<div id="toolbar" style="">
+				<div class="btn-group pull-left">
+					<a href="javascript:;" class="btn btn-mini btn-inverse" rel="tooltip" data-wysihtml5-command="bold" data-original-title="ctrl+b&lt;br/&gt;negrita" unselectable="on"><i class="icon-bold icon-white"></i></a><a href="javascript:;" class="btn btn-mini btn-inverse" rel="tooltip" data-wysihtml5-command="italic" data-original-title="ctrl+i&lt;br/&gt;cursiva" unselectable="on"><i class="icon-italic icon-white"></i></a>				</div>
+                <div class="txt_verde txt_pequena pull-right">
+                    Etiquetas permitidas: [quote][/quote], [code][/code], [url][/url], [spoiler][/spoiler]
+                </div>
+			</div>
+			<textarea name="informe" cols="40" rows="15" id="txt_informe" class="span9" style="height: 230px; display: none;"></textarea><input type="hidden" name="_wysihtml5_mode" value="1"><iframe class="wysihtml5-sandbox" security="restricted" allowtransparency="true" marginwidth="0" marginheight="0" style="background-color: rgb(255, 255, 255); border-collapse: separate; border-color: rgb(204, 204, 204); border-style: solid; border-width: 1px; clear: none; display: inline-block; float: none; margin: 0px; outline: rgb(85, 85, 85) none 0px; outline-offset: 0px; padding: 2px; position: static; z-index: auto; vertical-align: middle; text-align: start; box-sizing: content-box; box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 1px 0px inset; border-radius: 3px; width: 686px; height: 230px; inset: auto;" width="0" height="0" frameborder="0"></iframe>			<div id="error_contenido" style="display:none;" class="alert alert-error margen_t_10 ajustado_cont">
+				<img class="sprite icon-warning" src="ready-player-one_files/vacio_002.png"> El informe no puede estar vacío
+			</div>
+		</div>
+
+		<div id="cont_enlaces" class="control-group" style="display:none;">
+        			<label for="enlace">Enlace (opcional) <a href="#" id="prevenir" rel="tooltip" data-original-title="Si se desea incluir un enlace a algún tipo de fichero, introducirlo a continuación"><i class="icon-question-sign"></i></a></label>			<input type="text" name="enlace" id="txt_enlace" class="span9" autocomplete="off">			<div id="error_enlace" style="display:none;" class="alert alert-error margen_t_10 ajustado_cont">
+				<img class="sprite icon-warning" src="ready-player-one_files/vacio_002.png"> El enlace no es válido. Debe comenzar por <strong>http://</strong> o <strong>https://</strong>
+			</div>
+        </div>
+		<div id="error_general" style="display:none;" class="alert alert-error">
+			<img class="sprite icon-warning" src="ready-player-one_files/vacio_002.png"> Ha ocurrido un error, inténtalo de nuevo
+		</div>
+	</div>
+	<div class="modal-footer">
+                    <div id="cont_botones">
+            <a class="btn btn-small btn-primary" onclick="javascript:enviar();" href="#">Enviar</a>
+            <button class="btn btn-small btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+        </div>
+	</div>
+	</form></div>
+
+
+<div id="modal_demagnetize" class="modal modal-warning hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h4 id="myModalLabel">Aviso relativo a demagnetize.link</h4>
+	</div>
+  
+    <div class="modal-body">
+        <p>Se va a realizar la descarga de un archivo usando el servicio de demagnetize.link.<br>
+           Demagnetize.link es un servicio externo a nuestra web, cuya responsabilidad y funcionamiento no depende de ePubLibre.</p>
+        <p>Por favor, <strong>NO informar en los comentarios de posibles problemas al utilizar este servicio</strong>, puesto que ni dependen de nosotros ni podemos hacer nada para solucionarlos.</p>
+        <input type="hidden" id="enlace_ext" value="magnet:?xt=urn:btih:D5826C8174EFEDA5059F0F6F48C1706F28170A6B&amp;dn=EPL_Ready_Player_One&amp;tr=http://tracker.tfile.me/announce&amp;tr=udp://tracker.opentrackr.org:1337/announce&amp;tr=udp://tracker.openbittorrent.com:80&amp;tr=udp://tracker.publicbt.com:80&amp;tr=udp://open.demonii.com:1337/announce">
+    </div>
+    <div class="modal-footer ali_centro">
+        <button id="btn_continuar" class="btn btn-small btn-info" data-toggle="modal" onclick="javascript:continuar_demagnetize();">Continuar</button>
+        <button class="btn btn-small btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+    </div>
+</div>
+
+
+<div id="modal_info_votos" class="modal modal-info hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabelVotos" aria-hidden="true">
+	<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h4 id="myModalLabelVotos">Información sobre los votos</h4>
+	</div>
+  
+    <div class="modal-body" style="overflow-y:auto;">
+        <div id="cont_tabla_info_votos" style="margin-bottom:10px;text-align:center;"><p>Recuperando información sobre los votos...</p></div>
+    </div>
+    <div class="modal-footer ali_centro">
+        <button class="btn btn-small btn-primary" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+	
+	$("#modal_info_votos").on('show', function() {
+		if ($("#tabla_info_votos").length == 0) {
+			var url = "https://www.epublibre.org/libro/get_info_votos/ajax/627";
+			$("#cont_tabla_info_votos").html('<p>Recuperando información sobre los votos...</p>');
+			$("#cont_tabla_info_votos").append('<img alt="" height="50" width="50" src="https://www.epublibre.org//img/ajax_L50.gif" />');
+			$.ajax({
+				cache: false,
+				type: "POST",
+				url: url,
+				dataType: 'json',
+				success: function(e) {
+					if (e) {
+						$("#cont_tabla_info_votos").html(e);
+					} else {
+						$("#cont_tabla_info_votos").html('<div class="alert alert-error margen_t_10 ajustado_cont">Se ha producido un error al recuperar la info detallada de votos.<br/>Inténtalo de nuevo en otro momento</div>');
+					}
+				},
+				error: function(e) {
+					$("#cont_tabla_info_votos").html('<div class="alert alert-error margen_t_10 ajustado_cont">Se ha producido un error al recuperar la info detallada de votos.<br/>Inténtalo de nuevo en otro momento</div>');
+				}
+			});
+		}
+	});
+	
+</script>
+
+
+
+<script src="ready-player-one_files/wyssimple.js"></script>
+<script src="ready-player-one_files/wysihtml5-0.js"></script>
+<script src="ready-player-one_files/jquery.js"></script>
+<script type="text/javascript">
+  
+    
+    function ampliar () {
+        $('#cont_portada').show('slow');
+    };
+    function reducir() {
+        $('#cont_portada').hide('slow');
+    }
+    $('#cont_portada').mouseout(function(){reducir();});
+    
+    
+	$("[name=lect]").live('click', function(event) {
+		event.preventDefault();
+	});
+    $("#prevenir").live('click', function(event) {
+		event.preventDefault();
+	});
+	
+  
+    
+	function marcar(accion, valor) {
+		var url = "https://www.epublibre.org/libro/marcar/ajax/627/"+accion+"/"+valor;
+        $("[rel=tooltip]").tooltip('hide');
+        $('#lecturas').html('<div id="loading2"></div>');
+		$("#loading2").html('<img alt="" height="31" width="31" src="https://www.epublibre.org//img/ajaxL4.gif" />');
+		$.ajax({
+			cache: false,
+			type: "POST",
+			url: url,
+			dataType: 'json',
+			success: function(e) {
+				$('#lecturas').html(e);
+                $("[rel=tooltip]").tooltip({'placement':'top'});
+			}
+		});
+	}
+	
+    
+    
+	function gracias() {
+		var url = "https://www.epublibre.org/libro/marcar/ajax/627/gracias";
+        $("[rel=tooltip]").tooltip('hide');
+		$("#gracias").html('<img alt="" height="31" width="31" src="https://www.epublibre.org//img/ajaxL4.gif" />');
+		$.ajax({
+			cache: false,
+			type: "POST",
+			url: url,
+			dataType: 'json',
+			success: function(e) {
+				$("#num_gracias").html(e);
+                $("#gracias").html('');
+                $("[rel=tooltip]").tooltip({'placement':'top'});
+			}
+		});
+	}
+	
+    
+    
+	$('.star-radio').rating({
+		required: true,
+		callback: function(value, link) {
+			enviar_voto(value);
+		}
+	});
+	
+    
+    
+    function enviar_voto(value)
+    {
+        $('.star-radio').rating('readOnly', true, true);
+        $('[rel=tooltip]').tooltip('hide');
+        $("#msgVotos").html('<img alt="" src="https://www.epublibre.org//img/ajax.gif">');
+		$("#cont_tabla_info_votos").html('<p>Recuperando información sobre los votos...</p>');
+        $.ajax({
+            type: 'post',
+            url: 'https://www.epublibre.org/libro/rate/627/'+value,
+            dataType: 'json',
+            success: function(e) {
+                if (e.error!='') {
+                    $('#msgVotos').html('<div class="txt_negro normal pequena">'+e.error+'</div>');
+                    $('.star-radio').rating('readOnly', false, false);
+                }
+                else {
+                    $('#cont_puntuacion').html(e.html);
+                    $('.star-radio').rating();
+                    $('#cont_mi_nota').show('slow', function(){
+                        $("#btn_retirar_nota").css('display','');
+                    });
+                }
+                $("[rel=tooltip]").tooltip({'placement':'top'});
+            }
+        });
+    }
+    
+    
+    function retirar_voto()
+    {
+        $('[rel=tooltip]').tooltip('hide');
+        var nota = $("#cont_mi_nota").html();
+        $("#msgVotos").html('<img alt="" src="https://www.epublibre.org//img/ajax.gif">');
+		$("#cont_tabla_info_votos").html('<p>Recuperando información sobre los votos...</p>');
+        $("#btn_retirar_nota").css('display','none');
+        $.ajax({
+            type: 'post',
+            url: 'https://www.epublibre.org/libro/unrate/627',
+            dataType: 'json',
+            success: function(e) {
+                if (e.error!='') {
+                    $('#msgVotos').html('<div class="txt_negro normal pequena">'+e.error+'</div>');
+                    $("#cont_mi_nota").html(nota);
+                    $("#btn_retirar_nota").css('display','');
+                }
+                else {
+                    $('#cont_mi_nota').hide('slow', function(){
+                        $('#cont_puntuacion').html(e.html);
+                        $('.star-radio').rating({
+                            required: true,
+                            callback: function(value, link) {
+                                enviar_voto(value);
+                            }
+                        });
+                        $("[rel=tooltip]").tooltip({'placement':'top'});
+                    });
+                }
+            }
+        });
+    }
+    
+    
+    
+    
+    $("#en_desc").live('click', function(event) {
+        $.ajax({ url: 'https://www.epublibre.org/libro/libroclick/ajax/627' });
+    });
+    
+    
+    
+    
+	var editor = new wysihtml5.Editor("txt_informe", {
+		toolbar:        "toolbar",
+        autolink:       false,
+		parserRules:    wysihtml5ParserRules,
+		useLineBreaks:  true,
+        autoLink:       false
+	});
+	
+	
+	
+	function enviar()
+	{
+		error = false;
+		if ($('#txt_informe').val()=='')
+		{
+			$('#error_contenido').css('display','');
+			error = true;
+		}
+        else
+            $('#error_contenido').css('display','none');
+        if ($('#txt_tipo_errata').val()=='ne')
+        {
+            $('#error_tipo').css('display','');
+            error = true;
+        }
+        else
+            $('#error_tipo').css('display','none');
+        if (!error)
+        {
+            var en = document.getElementById('txt_enlace').value;
+            var patron = /^http[s]?:\/\//;
+            if ((en!='') && (!en.toLowerCase().match(patron)))
+            {
+                $('#error_enlace').css('display','');
+                error = true;
+            }
+            else
+            {
+                $('#error_enlace').css('display','none');
+                error = false;
+            }
+        }
+		if (error) return false;
+		document.forms["myform"].submit();
+        return false;
+	}
+	
+    
+    
+	$("#prevenir").live('click', function(event) {
+		event.preventDefault();
+	});
+	
+    
+    
+	function tipo(txt) {
+        if (txt!="ne") {
+            $('#error_tipo').css('display','none');
+        }
+        if (txt=="libro") {
+            $('#vers_errata').css('display','');
+            $('#cont_enlaces').css('display','');
+        }
+        else {
+            $('#vers_errata').css('display','none');
+            $('#cont_enlaces').css('display','none');
+        }
+	}
+	
+    
+    
+    function continuar_demagnetize() {
+        enlace = $("#enlace_ext").val();
+        window.open('https://demagnetize.link?magnet='+enlace);
+        $('#modal_demagnetize').modal('hide');
+    }
+</script>
+</div>
+
+
+
+<div class="bg_blanco">
+	<div class="row pad_tabla">
+	<table width="100%">
+		<tbody><tr>
+            			<td class="contenido" style="max-width:630px;">
+              
+                
+                                
+			
+				
+                <div><div class="titulo">Ready Player One</div></div><div> <div class="detalle"><div class="negrita">Sinopsis</div><div class="ali_justi"><span>Estamos
+ en el año 2044 y, como el resto de la humanidad, Wade Watts prefiere 
+mil veces el videojuego de OASIS al cada vez más sombrío mundo real. Se 
+afirma que esconde las piezas de un rompecabezas diabólico cuya 
+resolución conduce a una fortuna incalculable. Durante años, millones de
+ humanos han intentado dar con ellas, sin éxito. De repente, Wade logra 
+resolver el primer rompecabezas del premio, y a partir de ese momento 
+debe competir contra miles de jugadores para conseguir el trofeo. La 
+única forma de sobrevivir es ganar.<br>Ready Player One, el 
+impresionante debut de Ernest Cline, está revolucionando la literatura 
+de género en Estados Unidos. Antes incluso de su publicación, convenció a
+ la Warner Bros. de convertirlo en su próxima gran producción, a agentes
+ y editores de medio mundo de que compraran sus derechos, y cautivó a 
+autores de la talla de Charlaine Harris y Patrick Rothfuss, a quien, 
+según ha confesado, le pareció un libro escrito por él mismo. Desde 
+entonces, esta novela ha seducido a la crítica y ha alcanzado las listas
+ de más vendidos del <i>New York Times</i> y Amazon.</span></div><br><div class="negrita">Colecciones</div><div class="ali_justi"> <span> <div class="genero negrita txt_azul"> <a href="https://www.epublibre.org/coleccion/index/195">Nova</a> (300)<br> </div> </span></div><br><table width="100%"><tbody><tr><td width="42%" valign="top">  <div class="negrita"> Autores </div> <div class="ali_justi"> <span> <table> <tbody><tr> <td class="celda-rotulo"> <div class="label"> Escritor </div> </td> <td class="negrita txt_azul" nowrap="nowrap"> &nbsp; <a href="https://www.epublibre.org/autor/index/539">Ernest Cline</a> </td> </tr> <tr> <td class="celda-rotulo"> <div class="label"> Traductor </div> </td> <td class="negrita txt_azul" nowrap="nowrap"> &nbsp; <a href="https://www.epublibre.org/autor/index/756">Juanjo Estrella</a> </td> </tr> </tbody></table> </span> </div> </td><td width="58%" valign="top">  <div class="negrita"> Géneros </div> <div class="ali_justi"> <span> <table class="negrita"><tbody><tr><td class="celda-rotulo"><div class="label">Tipo</div></td><td>&nbsp;Ficción</td></tr><tr><td class="celda-rotulo"><div class="label">Género</div></td><td>&nbsp;<a href="https://www.epublibre.org/genero/index/genero/1/3">Novela</a></td></tr><tr><td class="celda-rotulo"><div class="label">Temas</div></td><td>&nbsp;<a href="https://www.epublibre.org/genero/index/subgenero/1/3">Ciencia ficción</a>, <a href="https://www.epublibre.org/genero/index/subgenero/1/15">Juvenil</a></td></tr></tbody></table> </span> </div> </td></tr></tbody></table><br> <br>   <div class="negrita"> Notas </div> <div class="ali_justi"> <span> <i><b>r1.1</b>: Corrección de metadatos.<br></i><i><b>r1.2</b>: Corrección de erratas.<br></i><i><b>r1.3</b>: Cambio de portada para ajustarla a la normativa.<br></i><i><b>r1.4</b>:
+ Corrección de erratas. Expresiones regulares 9.3 con cambios en los 
+signos de puntuación. Eliminación clase personal salto para adecuarla a 
+la estándar salto25. Eliminación de estilos centrados en párrafos de 
+citas para añadirlo al cuerpo de la cita como clase cursiva y centrado.<br></i><i><b>r1.5</b>: Actualizado a plantilla 1.1 y corrección de erratas.</i><i><br><b>r1.6</b>:<br>* Adaptado ePub Base 1.2<br>* Corrección del vínculo de una nota <br>* Adaptado a normas de acentuación de la RAE del 2010<br>* Cambiada portada por una versión vectorizada<br>* Cambiada imagen del autor por exceso en tamaño<br>*
+ Añadidas notas del Editor digital para aclarar algunos términos se 
+tradujeron de forma diferente en las fuentes donde se referencian para 
+así ayudar a su comprensión.<br>* Corrección de erratas gracias.<br><b>r1.7:</b> Corregido logo en portada.<br><b>r1.8:</b> Corrección de erratas tras lectura gracias a un amable lector.<br></i><b><i>r1.9:</i></b><i> Corrección de erratas tras lectura
+gracias a un amable lector, cotejando con el original en inglés.<br><b>r2.0:</b>
+ Corrección de varias erratas gracias a varios lectores y cambio de la 
+estructura de las notas por no adecuarse del todo al epub base (gracias a
+ EPLValidator 1.18 por darme el chivatazo).<br></i><i><i><b>r2.1:</b> Corrección de varias erratas gracias a varios lectores, muchas gracias por los informes.</i></i><br><i><i><b>r.2.2</b>: Corrección de erratas. Muchas gracias por la ayuda.<br></i></i><b>r.2.3</b>: Corrección de erratas y adaptado a ePub base 2.0<br><b>r2.4:</b> Corrección de una errata gracias a un amable lector. </span> </div> <br></div></div>				
+				                    
+                            <div class="similares">
+        <div class="ali_centro" style="padding-bottom:10px;">
+            
+            <div class="titulo degradado ali_izquierda">
+                Otros libros similares
+                <br>
+                <span>
+                    Si quieres explorar más a fondo puedes visitar <a href="https://www.epublibre.org/catalogo/index" class="negrita">nuestro catálogo</a>                </span>
+            </div>
+            
+            
+            <div class="pad_3 txt_pequena pad_l_20" style="margin-top:5px;display:inline-table;">
+									<div id="aportes" class="pull-left pad_min2 txt_pequena" style="margin-right:6px;">
+                        <div class="borde-portada portada-aportes txt_pequena">
+                            <a id="stk" href="https://www.epublibre.org/libro/detalle/58957" class="popover-libro" rel="popover" data-content="&lt;div class=&quot;txt_pequena&quot;&gt;&lt;div class=&quot;pull-right sprite idioma_1&quot;&gt;&lt;/div&gt;&lt;img class=&quot;sprite user_silhouette&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Isai Lukodianov&lt;br/&gt;&lt;div class=&quot;row-fluid&quot;&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-revision&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 1.1&lt;/div&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-paginas&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 318&lt;/div&gt;&lt;div class=&quot;pull-left pop-puntuacion&quot;&gt;&lt;img class=&quot;sprite icon-star&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 10 (2)&lt;/div&gt;&lt;div class=&quot;pull-left&quot;&gt;&lt;img class=&quot;sprite icon-thumb-up&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 49&lt;/div&gt;&lt;/div&gt;" data-original-title="La tripulación del Mekong">
+                                <div class="texto-portada">
+                                    <h2>Isai Lukodianov<br></h2>
+                                    <h1>La tripulación del Mekong</h1>
+                                </div>
+                                <div class="portada-aportes">
+                                    <img id="aportes" src="ready-player-one_files/latripulaciondelmekong.jpg" alt="" width="84" height="126">
+                                </div>
+                            </a>
+                        </div>
+					</div>
+									<div id="aportes" class="pull-left pad_min2 txt_pequena" style="margin-right:6px;">
+                        <div class="borde-portada portada-aportes txt_pequena">
+                            <a id="stk" href="https://www.epublibre.org/libro/detalle/55957" class="popover-libro" rel="popover" data-content="&lt;div class=&quot;txt_pequena&quot;&gt;&lt;div class=&quot;pull-right sprite idioma_1&quot;&gt;&lt;/div&gt;&lt;img class=&quot;sprite user_silhouette&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Clara Cortés&lt;br/&gt;&lt;div class=&quot;row-fluid&quot;&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-revision&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 1.0&lt;/div&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-paginas&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 232&lt;/div&gt;&lt;div class=&quot;pull-left pop-puntuacion&quot;&gt;&lt;img class=&quot;sprite icon-star&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 10 (2)&lt;/div&gt;&lt;div class=&quot;pull-left&quot;&gt;&lt;img class=&quot;sprite icon-thumb-up&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 49&lt;/div&gt;&lt;/div&gt;" data-original-title="Cosas que escribiste sobre el fuego">
+                                <div class="texto-portada">
+                                    <h2>Clara Cortés<br></h2>
+                                    <h1>Cosas que escribiste sobre el fuego</h1>
+                                </div>
+                                <div class="portada-aportes">
+                                    <img id="aportes" src="ready-player-one_files/uO9Dvbi.jpg" alt="" width="84" height="126">
+                                </div>
+                            </a>
+                        </div>
+					</div>
+									<div id="aportes" class="pull-left pad_min2 txt_pequena" style="margin-right:6px;">
+                        <div class="borde-portada portada-aportes txt_pequena">
+                            <a id="stk" href="https://www.epublibre.org/libro/detalle/59190" class="popover-libro" rel="popover" data-content="&lt;div class=&quot;txt_pequena&quot;&gt;&lt;div class=&quot;pull-right sprite idioma_1&quot;&gt;&lt;/div&gt;&lt;img class=&quot;sprite user_silhouette&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Jennifer Cervantes&lt;br/&gt;&lt;img class=&quot;sprite node-tree&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; El hijo del trueno [1]&lt;br/&gt;&lt;div class=&quot;row-fluid&quot;&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-revision&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 1.0&lt;/div&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-paginas&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 336&lt;/div&gt;&lt;div class=&quot;pull-left pop-puntuacion&quot;&gt;&lt;img class=&quot;sprite icon-star&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; -&lt;/div&gt;&lt;div class=&quot;pull-left&quot;&gt;&lt;img class=&quot;sprite icon-thumb-up&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; -&lt;/div&gt;&lt;/div&gt;" data-original-title="El hijo del trueno">
+                                <div class="texto-portada">
+                                    <h2>Jennifer Cervantes<br></h2>
+                                    <h1>El hijo del trueno</h1>
+                                </div>
+                                <div class="portada-aportes">
+                                    <img id="aportes" src="ready-player-one_files/O8kT8kw.jpg" alt="" width="84" height="126">
+                                </div>
+                            </a>
+                        </div>
+					</div>
+									<div id="aportes" class="pull-left pad_min2 txt_pequena" style="margin-right:6px;">
+                        <div class="borde-portada portada-aportes txt_pequena">
+                            <a id="stk" href="https://www.epublibre.org/libro/detalle/56672" class="popover-libro" rel="popover" data-content="&lt;div class=&quot;txt_pequena&quot;&gt;&lt;div class=&quot;pull-right sprite idioma_1&quot;&gt;&lt;/div&gt;&lt;img class=&quot;sprite user_silhouette&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Charlie Higson&lt;br/&gt;&lt;img class=&quot;sprite node-tree&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Young Bond [1]&lt;br/&gt;&lt;div class=&quot;row-fluid&quot;&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-revision&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 1.0&lt;/div&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-paginas&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 253&lt;/div&gt;&lt;div class=&quot;pull-left pop-puntuacion&quot;&gt;&lt;img class=&quot;sprite icon-star&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 6 (1)&lt;/div&gt;&lt;div class=&quot;pull-left&quot;&gt;&lt;img class=&quot;sprite icon-thumb-up&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 44&lt;/div&gt;&lt;/div&gt;" data-original-title="Misión Silverfin">
+                                <div class="texto-portada">
+                                    <h2>Charlie Higson<br></h2>
+                                    <h1>Misión Silverfin</h1>
+                                </div>
+                                <div class="portada-aportes">
+                                    <img id="aportes" src="ready-player-one_files/qSKzvMI.jpg" alt="" width="84" height="126">
+                                </div>
+                            </a>
+                        </div>
+					</div>
+									<div id="aportes" class="pull-left pad_min2 txt_pequena" style="margin-right:6px;">
+                        <div class="borde-portada portada-aportes txt_pequena">
+                            <a id="stk" href="https://www.epublibre.org/libro/detalle/55534" class="popover-libro" rel="popover" data-content="&lt;div class=&quot;txt_pequena&quot;&gt;&lt;div class=&quot;pull-right sprite idioma_1&quot;&gt;&lt;/div&gt;&lt;img class=&quot;sprite user_silhouette&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Philippe Ebly&lt;br/&gt;&lt;img class=&quot;sprite node-tree&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Los conquistadores de lo imposible [10]&lt;br/&gt;&lt;div class=&quot;row-fluid&quot;&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-revision&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 1.0&lt;/div&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-paginas&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 100&lt;/div&gt;&lt;div class=&quot;pull-left pop-puntuacion&quot;&gt;&lt;img class=&quot;sprite icon-star&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 10 (3)&lt;/div&gt;&lt;div class=&quot;pull-left&quot;&gt;&lt;img class=&quot;sprite icon-thumb-up&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 65&lt;/div&gt;&lt;/div&gt;" data-original-title="La isla que surgió del mar">
+                                <div class="texto-portada">
+                                    <h2>Philippe Ebly<br></h2>
+                                    <h1>La isla que surgió del mar</h1>
+                                </div>
+                                <div class="portada-aportes">
+                                    <img id="aportes" src="ready-player-one_files/sLqwfLM.jpg" alt="" width="84" height="126">
+                                </div>
+                            </a>
+                        </div>
+					</div>
+									<div id="aportes" class="pull-left pad_min2 txt_pequena" style="margin-right:6px;">
+                        <div class="borde-portada portada-aportes txt_pequena">
+                            <a id="stk" href="https://www.epublibre.org/libro/detalle/54818" class="popover-libro" rel="popover" data-content="&lt;div class=&quot;txt_pequena&quot;&gt;&lt;div class=&quot;pull-right sprite idioma_1&quot;&gt;&lt;/div&gt;&lt;img class=&quot;sprite user_silhouette&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; W. Ama&lt;br/&gt;&lt;img class=&quot;sprite node-tree&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Ideas en la casa del árbol [4]&lt;br/&gt;&lt;div class=&quot;row-fluid&quot;&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-revision&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 1.0&lt;/div&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-paginas&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 108&lt;/div&gt;&lt;div class=&quot;pull-left pop-puntuacion&quot;&gt;&lt;img class=&quot;sprite icon-star&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 10 (1)&lt;/div&gt;&lt;div class=&quot;pull-left&quot;&gt;&lt;img class=&quot;sprite icon-thumb-up&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 43&lt;/div&gt;&lt;/div&gt;" data-original-title="Sigue adelante">
+                                <div class="texto-portada">
+                                    <h2>W. Ama<br></h2>
+                                    <h1>Sigue adelante</h1>
+                                </div>
+                                <div class="portada-aportes">
+                                    <img id="aportes" src="ready-player-one_files/6XAbR6r.jpg" alt="" width="84" height="126">
+                                </div>
+                            </a>
+                        </div>
+					</div>
+				                <div style="clear:both;"></div>
+            </div>
+            
+        </div>
+    </div>
+                    
+                				
+				
+                
+
+
+
+<div>
+	<div class="titulo degradado">
+		Comentarios
+	</div>
+            <div class="txt_pequena" style="margin:5px 20px 0 20px;line-height:1.1em;">
+          Los comentarios se utilizarán para proporcionar información o expresar opiniones <b>sobre el libro</b> en cuestión, y deben adaptarse a lo especificado en <a href="https://www.epublibre.org/foro/viewtopic.php?f=34&amp;t=1010">las normas</a>.
+ Para avisar de problemas con la descarga o erratas, se debe usar el 
+botón "Avisos y erratas" (arriba a la derecha). Si se desea iniciar una 
+discusión sobre la temática del libro, se puede hacer <a href="https://www.epublibre.org/foro/viewforum.php?f=18">en el foro</a>. Aquellos comentarios que incumplan estas normas podrán ser eliminados sin previo aviso.
+        </div>
+    </div>
+
+
+<br>
+
+
+<div>
+	<div class="detalle">
+	
+		
+		                            <div id="formulario_com">
+                    <span id="cont_com">
+                        <form action="https://www.epublibre.org/libro/comentario/627" method="post" accept-charset="utf-8" id="form_nuevo"><div style="display:none">
+<input type="hidden" name="csrf_test_name" value="ee706ce8d9432553799cf7aa7d8954ed">
+</div>                            <textarea name="comentario" cols="40" rows="3" id="comentario" style="width:100%" placeholder="introduce aquí tu comentario ..."></textarea>                            <div>
+                                <button name="bt_grabar" type="button" class="btn btn-mini" onclick="javascript:nuevo_msj()">Comentar</button>                                                            </div>
+                            <input type="hidden" name="epl_id" value="627">
+                        </form>                    </span>
+                    <div id="temporizador"></div>
+                    <div id="com_publicado" class="alert alert-info margen_t_10" style="display:none;">
+                    </div>
+                    <div id="com_error" class="alert alert-error margen_t_10" style="display:none;">
+                    </div>
+                </div>
+                <br>
+            				
+		
+		
+		<div>
+            <a name="comentarios"></a>
+			<span>
+				                
+                                  
+					
+                    <div id="contenido">
+                    											<div id="com_134283" class="alert alert-success">
+                                                        <div>
+                                                                        
+                                                            <a href="https://www.epublibre.org/usuario/detalle/75984" class="negrita"><img id="avatar30" class="sprite user-30" src="ready-player-one_files/vacio.png" alt=""> japonnesa</a>                                 <strong>el 24-06-2020 a las 23:26:18</strong>
+                                                                        
+                                                                        
+                                    
+                                        <div id="btn_avisar" class="pull-right">
+                                                                                            <a onclick="javascript:func_avisar_msj(134283);" href="#modal_avisar_com" role="button" data-toggle="modal" id="stk" rel="tooltip1" data-original-title="Avisar de comentario inadecuado"><i class="icon-warning-sign"></i></a>
+                                                                                    </div>
+                                        
+                                                                                                </div>
+                            							<div id="contenido_com_134283" class="borde-sup-verde pad_8 corta_palabras txt_negro">
+                                El libro supera con creces la película. 
+Me lo pasé genial, me reí en algunas de las "escenas" y lo devoré. 
+Literatura de adolescentes para adultos de corazón joven!!!							</div>
+							<div class="borde-sup-verde txt_mediana firma">
+															</div>
+						</div>
+                        											<div id="com_132895" class="alert alert-success">
+                                                        <div>
+                                                                        
+                                                            <a href="https://www.epublibre.org/usuario/detalle/48469" class="negrita"><img id="avatar30" class="sprite user-30" src="ready-player-one_files/vacio.png" alt=""> akerra</a>                                 <strong>el 25-05-2020 a las 08:35:01</strong>
+                                                                        
+                                                                        
+                                    
+                                        <div id="btn_avisar" class="pull-right">
+                                                                                            <a onclick="javascript:func_avisar_msj(132895);" href="#modal_avisar_com" role="button" data-toggle="modal" id="stk" rel="tooltip1" data-original-title="Avisar de comentario inadecuado"><i class="icon-warning-sign"></i></a>
+                                                                                    </div>
+                                        
+                                                                                                </div>
+                            							<div id="contenido_com_132895" class="borde-sup-verde pad_8 corta_palabras txt_negro">
+                                Libro entretenido. Si te gusta la cultura ochentera totalmente recomendable.							</div>
+							<div class="borde-sup-verde txt_mediana firma">
+															</div>
+						</div>
+                        											<div id="com_132751" class="alert alert-success">
+                                                        <div>
+                                                                        
+                                                            <a href="https://www.epublibre.org/usuario/detalle/10436" class="negrita"><img id="avatar30" class="sprite user-30" src="ready-player-one_files/vacio.png" alt=""> plumbio</a>                                 <strong>el 22-05-2020 a las 10:16:18</strong>
+                                                                        
+                                                                        
+                                    
+                                        <div id="btn_avisar" class="pull-right">
+                                                                                            <a onclick="javascript:func_avisar_msj(132751);" href="#modal_avisar_com" role="button" data-toggle="modal" id="stk" rel="tooltip1" data-original-title="Avisar de comentario inadecuado"><i class="icon-warning-sign"></i></a>
+                                                                                    </div>
+                                        
+                                                                                                </div>
+                            							<div id="contenido_com_132751" class="borde-sup-verde pad_8 corta_palabras txt_negro">
+                                Este libro tiene el don de tomar 
+elementos conocidos para envolverlos de una manera que resulta original y
+ vistosa para el lector familiarizado con el género, con el añadido de 
+hacer una novela que tanto el público adolescente como el adulto puede 
+disfrutarlo por igual.<br><br>Para mi el elemento crucial de esta obra, 
+junto con el mundo de Oasis, es el hecho de que Cline ha hecho de la 
+cultura pop ochentera EL PERSONAJE, como Derry en It o la Tierra Media 
+en las obras de Tolkien.<br><br>Los personajes “reales” tienen un rol 
+secundario con lo que muchos de sus comportamientos resultan 
+estereotipados con diversos clichés, a pesar de eso funcionan bastante 
+bien y resultan creíbles.<br><br>La novela flaquea en su última parte, 
+cómo si el escritor tuviera prisa por acabar la novela. Una lástima pues
+ de haber tenido un final más depurado o imprevisible nos encontraríamos
+ con un clásico del género.<br><br>No encontré erratas.							</div>
+							<div class="borde-sup-verde txt_mediana firma">
+															</div>
+						</div>
+                        											<div id="com_130083" class="alert alert-success">
+                                                        <div>
+                                                                        
+                                                            <a href="https://www.epublibre.org/usuario/detalle/261125" class="negrita"><img id="avatar30" class="sprite user-30" src="ready-player-one_files/vacio.png" alt=""> Gambo13</a>                                 <strong>el 03-04-2020 a las 11:55:36</strong>
+                                                                        
+                                                                        
+                                    
+                                        <div id="btn_avisar" class="pull-right">
+                                                                                            <a onclick="javascript:func_avisar_msj(130083);" href="#modal_avisar_com" role="button" data-toggle="modal" id="stk" rel="tooltip1" data-original-title="Avisar de comentario inadecuado"><i class="icon-warning-sign"></i></a>
+                                                                                    </div>
+                                        
+                                                                                                </div>
+                            							<div id="contenido_com_130083" class="borde-sup-verde pad_8 corta_palabras txt_negro">
+                                Me encanto, lo leí después de ver la película y el libro la supera con creces.							</div>
+							<div class="borde-sup-verde txt_mediana firma">
+															</div>
+						</div>
+                        											<div id="com_124095" class="alert alert-success">
+                                                        <div>
+                                                                        
+                                                            <a href="https://www.epublibre.org/usuario/detalle/248951" class="negrita"><img id="avatar30" class="sprite user-30" src="ready-player-one_files/vacio.png" alt=""> sombra</a>                                 <strong>el 03-11-2019 a las 19:40:04</strong>
+                                                                        
+                                                                        
+                                    
+                                        <div id="btn_avisar" class="pull-right">
+                                                                                            <a onclick="javascript:func_avisar_msj(124095);" href="#modal_avisar_com" role="button" data-toggle="modal" id="stk" rel="tooltip1" data-original-title="Avisar de comentario inadecuado"><i class="icon-warning-sign"></i></a>
+                                                                                    </div>
+                                        
+                                                                                                </div>
+                            							<div id="contenido_com_124095" class="borde-sup-verde pad_8 corta_palabras txt_negro">
+                                estupenda historia, lectura fácil y muy entretenida. 							</div>
+							<div class="borde-sup-verde txt_mediana firma">
+															</div>
+						</div>
+                        											<div id="com_119139" class="alert alert-success">
+                                                        <div>
+                                                                        
+                                                            <a href="https://www.epublibre.org/usuario/detalle/71331" class="negrita"><img id="avatar30" class="sprite user-30" src="ready-player-one_files/vacio.png" alt=""> fcrespo</a>                                 <strong>el 29-06-2019 a las 05:31:19</strong>
+                                                                        
+                                                                        
+                                    
+                                        <div id="btn_avisar" class="pull-right">
+                                                                                            <a onclick="javascript:func_avisar_msj(119139);" href="#modal_avisar_com" role="button" data-toggle="modal" id="stk" rel="tooltip1" data-original-title="Avisar de comentario inadecuado"><i class="icon-warning-sign"></i></a>
+                                                                                    </div>
+                                        
+                                                                                                </div>
+                            							<div id="contenido_com_119139" class="borde-sup-verde pad_8 corta_palabras txt_negro">
+                                Me gustó mucho.... ideal para leer en el
+ verano. No es nada profundo ni va a cambiar tu manera de ver la vida 
+pero cumple con lo que se propone: entretener							</div>
+							<div class="borde-sup-verde txt_mediana firma">
+															</div>
+						</div>
+                        											<div id="com_118196" class="alert alert-success">
+                                                        <div>
+                                                                        
+                                                            <a href="https://www.epublibre.org/usuario/detalle/238344" class="negrita"><img id="avatar30" class="sprite user-30" src="ready-player-one_files/vacio.png" alt=""> 3pa</a>                                 <strong>el 09-06-2019 a las 15:10:49</strong>
+                                                                        
+                                                                        
+                                    
+                                        <div id="btn_avisar" class="pull-right">
+                                                                                            <a onclick="javascript:func_avisar_msj(118196);" href="#modal_avisar_com" role="button" data-toggle="modal" id="stk" rel="tooltip1" data-original-title="Avisar de comentario inadecuado"><i class="icon-warning-sign"></i></a>
+                                                                                    </div>
+                                        
+                                                                                                </div>
+                            							<div id="contenido_com_118196" class="borde-sup-verde pad_8 corta_palabras txt_negro">
+                                Estupendo libro con grandes 
+reminiscencias a los años 80. Muy entretenido y despues vi la peli y me 
+gusto mas el libro, la peli la han cambiado bastante.							</div>
+							<div class="borde-sup-verde txt_mediana firma">
+															</div>
+						</div>
+                        											<div id="com_117966" class="alert alert-success">
+                                                        <div>
+                                                                        
+                                                            <a href="https://www.epublibre.org/usuario/detalle/238164" class="negrita"><img id="avatar30" class="sprite user-30" src="ready-player-one_files/vacio.png" alt=""> Nachop</a>                                 <strong>el 06-06-2019 a las 01:17:08</strong>
+                                                                        
+                                                                        
+                                    
+                                        <div id="btn_avisar" class="pull-right">
+                                                                                            <a onclick="javascript:func_avisar_msj(117966);" href="#modal_avisar_com" role="button" data-toggle="modal" id="stk" rel="tooltip1" data-original-title="Avisar de comentario inadecuado"><i class="icon-warning-sign"></i></a>
+                                                                                    </div>
+                                        
+                                                                                                </div>
+                            							<div id="contenido_com_117966" class="borde-sup-verde pad_8 corta_palabras txt_negro">
+                                Está muy bueno, aunque te puedes saltar algunos capítulos <br>la peli si deja mucho que desear y cambian muchas cosas <br>recomiendo el libro :) 							</div>
+							<div class="borde-sup-verde txt_mediana firma">
+															</div>
+						</div>
+                        											<div id="com_117551" class="alert alert-success">
+                                                        <div>
+                                                                        
+                                                            <a href="https://www.epublibre.org/usuario/detalle/54942" class="negrita"><img id="avatar30" src="ready-player-one_files/2wgem9y.jpg" alt="" width="30" height="30"> JoeFox</a>                                 <strong>el 25-05-2019 a las 22:57:10</strong>
+                                                                        
+                                                                        
+                                    
+                                        <div id="btn_avisar" class="pull-right">
+                                                                                            <a onclick="javascript:func_avisar_msj(117551);" href="#modal_avisar_com" role="button" data-toggle="modal" id="stk" rel="tooltip1" data-original-title="Avisar de comentario inadecuado"><i class="icon-warning-sign"></i></a>
+                                                                                    </div>
+                                        
+                                                                                                </div>
+                            							<div id="contenido_com_117551" class="borde-sup-verde pad_8 corta_palabras txt_negro">
+                                Es una mierda, no puedo creer la publicidad que le hacen a esta bazofia! 							</div>
+							<div class="borde-sup-verde txt_mediana firma">
+															</div>
+						</div>
+                        											<div id="com_116669" class="alert alert-success">
+                                                        <div>
+                                                                        
+                                                            <a href="https://www.epublibre.org/usuario/detalle/90264" class="negrita"><img id="avatar30" class="sprite user-30" src="ready-player-one_files/vacio.png" alt=""> PaulaDDa</a>                                 <strong>el 01-05-2019 a las 00:32:37</strong>
+                                                                        
+                                                                        
+                                    
+                                        <div id="btn_avisar" class="pull-right">
+                                                                                            <a onclick="javascript:func_avisar_msj(116669);" href="#modal_avisar_com" role="button" data-toggle="modal" id="stk" rel="tooltip1" data-original-title="Avisar de comentario inadecuado"><i class="icon-warning-sign"></i></a>
+                                                                                    </div>
+                                        
+                                                                                                </div>
+                            							<div id="contenido_com_116669" class="borde-sup-verde pad_8 corta_palabras txt_negro">
+                                Me ha flipado y enganchado al máximo. Vi
+ primero la peli y luego he leído el libro. Creo que es el orden 
+correcto para que la peli no te decepcione. Si te gusta la ciencia 
+ficción la aventura y eres un frikazo y nostalgico de los 80-90, este es
+ tu libro sin duda alguna.							</div>
+							<div class="borde-sup-verde txt_mediana firma">
+															</div>
+						</div>
+                        					                    </div>
+                    					
+                    
+                    <div class="row">
+                        <div id="paginador" class="ali_centro" style="width:600px;padding-left:8px;">
+                            <div class="pagination pagination-centered" style="margin:5px;"><ul><li class="active" id="pagina"><a href="#">1</a></li><li id="pagina"><a href="https://www.epublibre.org/libro/detalle/627/10">2</a></li><li id="pagina"><a href="https://www.epublibre.org/libro/detalle/627/20">3</a></li><li id="pagina"><a href="https://www.epublibre.org/libro/detalle/627/10">Siguiente</a></li></ul></div>                        </div>
+                    </div>
+                    
+					
+							</span>
+		</div>
+		
+		
+	</div>
+</div>
+
+
+<div id="modal_elim_com" class="modal modal-danger hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h4 id="myModalLabel">Retirar comentario</h4>
+	</div>
+		<form action="https://www.epublibre.org/libro/retirar_comentario/627" method="post" accept-charset="utf-8" id="eliminar" name="eliminar"><div style="display:none">
+<input type="hidden" name="csrf_test_name" value="ee706ce8d9432553799cf7aa7d8954ed">
+</div>			<div class="modal-body">
+				<p>¿Estás seguro de que deseas retirar el comentario publicado?</p>
+				<input type="hidden" id="eliminar_msj" name="eliminar_msj">
+                <input type="hidden" id="epl_id" name="epl_id" value="627">
+			</div>
+			<div class="modal-footer">
+				<button name="bt_entrar" type="button" class="btn btn-small btn-primary" onclick="javascript:retirar_msj();">Retirar</button>				<button class="btn btn-small btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+			</div>
+		</form></div>
+
+
+<div id="modal_avisar_com" class="modal modal-danger hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h4 id="myModalLabel2">Avisar de comentario inadecuado</h4>
+	</div>
+    <form action="https://www.epublibre.org/libro/avisar_comentario/627" method="post" accept-charset="utf-8" id="avisar" name="avisar"><div style="display:none">
+<input type="hidden" name="csrf_test_name" value="ee706ce8d9432553799cf7aa7d8954ed">
+</div>        <div class="modal-body">
+            <p>Indica el motivo por el que consideras que el comentario es inadecuado:</p>
+            <textarea name="txt_aviso" cols="40" rows="3" id="txt_aviso" class="span7"></textarea>            <input type="hidden" id="avisar_msj" name="avisar_msj">
+            <div class="form-inline">
+                <input type="checkbox" name="notificar" value="1" checked="checked" id="notificar" style="margin-top:0px;">                <label for="notificar">Recibir notificación cuando los moderadores hayan resuelto el aviso enviado</label>            </div>
+            <div id="error_aviso" style="display:none;" class="alert alert-error margen_t_10 ajustado_cont">
+                <img class="sprite icon-warning" src="ready-player-one_files/vacio_002.png"> Debes indicar el motivo para poder enviar el aviso
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button name="bt_entrar" type="button" class="btn btn-small btn-primary" onclick="javascript:avisar_com();">Enviar aviso</button>            <button class="btn btn-small btn-danger" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+        </div>
+    </form></div>
+
+<div id="modal_com_avisado" class="modal modal-info hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h4 id="myModalLabel3">Avisar de comentario inadecuado</h4>
+	</div>
+    <div class="modal-body">
+        <p>Este mensaje ya tiene un aviso pendiente de resolución</p>
+    </div>
+    <div class="modal-footer ali_centro">
+		<button class="btn btn-small btn-danger" data-dismiss="modal" aria-hidden="true">Aceptar</button>
+	</div>
+</div>
+
+<div id="modal_info_aviso" class="modal modal-info hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-header">
+		<h4 id="myModalLabel4">Envío de aviso acerca de mensaje inadecuado</h4>
+	</div>
+    <div class="modal-body">
+        <div id="modal_info_aviso_cont"></div>
+    </div>
+    <div id="modal_info_aviso_pie" class="modal-footer ali_centro">
+		<button class="btn btn-small btn-danger" data-dismiss="modal" aria-hidden="true">Aceptar</button>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+  
+    
+	function func_avisar_msj(id){
+		document.forms['avisar'].elements['avisar_msj'].value = id;
+	}
+	
+    
+    
+	function avisar_com() {
+        var texto = $("#txt_aviso").val();
+        if (texto=="") {
+            $("#error_aviso").css('display', '');
+            return false;
+        }
+        var id = $("#avisar_msj").val();
+        var url = "https://www.epublibre.org/libro/avisar_comentario/ajax";
+        $("#error_aviso").css('display', 'none');
+        $("#modal_avisar_com").modal("hide");
+        var contenido='<div class="alert alert-info">Enviando aviso....&nbsp;&nbsp;'+'<img alt="" height="31" width="31" src="https://www.epublibre.org/img/ajax.gif" />'+'</div>';
+        $("#modal_info_aviso_cont").html(contenido);
+        $("#modal_info_aviso_pie").css("display","none");
+        $("#modal_info_aviso").modal("show");
+		$.ajax({
+			cache: false,
+			type: "POST",
+			url: url,
+			dataType: 'json',
+            data: $("#avisar").serialize(),
+			success: function(e) {
+                if (e.error!='') {
+                    contenido = '<div class="alert alert-error"><img alt="" class="sprite icon-warning" src="https://www.epublibre.org/img/vacio.png" />&nbsp;&nbsp;'+e.error+'</div>';
+                }
+                else {
+                    contenido = '<div class="alert alert-success"><img alt="" class="sprite icon-ok" src="https://www.epublibre.org/img/vacio.png" />&nbsp;&nbsp;'+e.contenido+'</div>';
+                    $("#txt_aviso").val("");
+                    $("#notificar").prop('checked', true);
+                    $("#com_"+id+" #btn_avisar > a").prop("href", "#modal_com_avisado");
+                }
+                $("#modal_info_aviso_cont").html(contenido);
+                $("#modal_info_aviso_pie").css("display","");
+                if (false) {
+                    var aviso = '<div id="enlace_resoluc" class="alert alert-error margen_b_5 ali_centro">';
+                    aviso+='<a onclick="javascript:resolver_aviso('+id+');" href="#" role="button" data-toggle="modal" id="stk" rel="tooltip1" title="Resolver el aviso">';
+                    aviso+='<img class="sprite icon-warning" src="https://www.epublibre.org/img/vacio.png"/>&nbsp;&nbsp;Hay un aviso pendiente para este comentario';
+                    aviso+='</a></div>';
+                    $("#com_"+id).prepend(aviso);
+                }
+			}
+		});
+	}
+	
+</script>
+
+
+<script type="text/javascript">
+  
+    
+	$("#pagina a").live('click', function(event) {
+		event.preventDefault();
+	});
+	
+	
+	
+	$("#pagina a").live('click', function() {
+		var url = $(this).attr("href");
+		var n = url.lenght;
+		if (url.substring(n-1,n)=='#') exit;
+		if (url.lastIndexOf("/")==url.length-1) {url = url + "0"};
+		url = url + "/ajax";
+        var tam_pag = $("#paginador").height();
+		$("#paginador").html('<img alt="" height="25" width="25" src="https://www.epublibre.org//img/ajax.gif" />').height(tam_pag);
+		$.ajax({
+			cache: false,
+			type: "POST",
+			url: url,
+			dataType: 'json',
+			success: function(e) {
+				$('#contenido').html(e.contenido);
+				$('#paginador').html(e.paginacion);
+				$('#loading').addClass('nomostrar');
+				$("#loading").html('');
+				$("[rel=tooltip1]").tooltip({'placement':'top'});
+			}
+		});
+	});
+	
+    
+    
+    var contenido_comentario = '';
+    
+	function edit_msj(id){
+        $("#contenido [role=button]").css('display','none');
+        $("#formulario_com").css('display','none');
+        $("#contenido_com_"+id).css('display','none');
+        contenido_comentario = $("#edit").val();
+        $("#editor").css('display', '');
+	}
+	
+    
+    
+	function cancel_msj(id){
+        $("#contenido [role=button]").css('display','');
+        $("#formulario_com").css('display','');
+        $("#contenido_com_"+id).css('display','');
+        $("#editor").css('display', 'none');
+        $("#edit").val(contenido_comentario);
+        contenido_comentario = '';
+	}
+	
+    
+    
+	function guardar_msj(id) {
+		var url = "https://www.epublibre.org/libro/editar_comentario/ajax";
+        var texto = $("#contenido_com_"+id).html();
+		$("#contenido_com_"+id).html('<img alt="" height="31" width="31" src="https://www.epublibre.org//img/ajax.gif" />');
+        $("#editor").css('display','none');
+        $("#contenido_com_"+id).css('display', '');
+		$.ajax({
+			cache: false,
+			type: "POST",
+			url: url,
+			dataType: 'json',
+            data: $("#form_edicion").serialize(),
+			success: function(e) {
+                if (e.error!='') {
+                    $("#com_error").html(e.error);
+                    $("#com_error").css('display', '');
+                    $("#contenido_com_"+id).html(texto);
+                }
+                else {
+                    $('#contenido_com_'+id).html(e.contenido);
+                }
+                $("#contenido [role=button]").css('display','');
+                $("#formulario_com").css('display','');
+			}
+		});
+	}
+	
+    
+    
+	function del_msj(id){
+		document.forms['eliminar'].elements['eliminar_msj'].value = id;
+	}
+	
+    
+    
+	function retirar_msj() {
+		var url = "https://www.epublibre.org/libro/retirar_comentario/ajax";
+        var id = $("#eliminar_msj").val();
+        var texto = $("#contenido_com_"+id).html();
+        $("#com_error").css('display', 'none');
+        $("#contenido [role=button]").css('display','none');
+        $("#contenido_com_"+id).html('<img alt="" height="31" width="31" src="https://www.epublibre.org//img/ajax.gif" />');
+        $("#cont_com").css('display','none');
+        $("#modal_elim_com").modal('hide');
+		$.ajax({
+			cache: false,
+			type: "POST",
+			url: url,
+			dataType: 'json',
+            data: $("#eliminar").serialize(),
+			success: function(e) {
+                if (e!='') {
+                    $("#com_error").html(e);
+                    $("#com_error").css('display', '');
+                    $("#contenido_com_"+id).html(texto);
+                    $("#cont_com").css('display', '');
+                    $("#contenido [role=button]").css('display','');
+                }
+                else {
+                    $("#com_"+id).remove();
+                    $("#com_publicado").html('El comentario se ha retirado correctamente')
+                            .hide()
+                            .slideToggle(500)
+                            .delay(3500)
+                            .slideToggle(500, function() {
+                                $("#cont_com").css('display', '');
+                                $("#contenido [role=button]").css('display','');
+                            });
+                }
+			}
+		});
+	}
+	
+    
+    
+	function nuevo_msj() {
+        var val = $("#comentario").val();
+        if ((val=='') || (val.length<5)) {
+            $("#com_error").html('El comentario debe tener 5 caracteres de longitud como mínimo.').css('display','');
+            return false;
+        }
+        $(".alert-error").css('display', 'none');
+		var url = "https://www.epublibre.org/libro/comentario_nuevo/ajax";
+        $("#cont_com").css('display', 'none');
+		$("#temporizador").html('<div class="alert alert-success txt_mediana"><img alt="" height="31" width="31" src="https://www.epublibre.org//img/ajax.gif" />&nbsp;&nbsp;&nbsp;Enviando comentario...</div>');
+		$.ajax({
+			cache: false,
+			type: "POST",
+			url: url,
+			dataType: 'json',
+            data: $("#form_nuevo").serialize(),
+			success: function(e) {   
+                if (e.error!='') {
+                    $("#com_error").html(e.error);
+                    $("#com_error").css('display', '');
+                    $("#cont_com").css('display', '');
+                }
+                else {
+                    
+                    if ($("#editor").length)
+                        $("#editor").remove();
+                    if ($("#btn_editar").length)
+                        $("#btn_editar").remove();
+                    
+                    var div = document.createElement("div");
+                    $(div).addClass("alert alert-success")
+                        .attr("id", "com_"+e.id)
+                        .html(e.contenido)
+                        .prependTo($("#contenido"))
+                        .hide()
+                        .slideToggle(300);
+                    $("#contenido [role=button]").css('display','none');
+                    if ($("#no_com").length)
+                        $("#no_com").css('display','none');
+                    $("#com_publicado").html('El comentario se ha publicado correctamente')
+                        .hide()
+                        .slideToggle(500)
+                        .delay(3500)
+                        .slideToggle(500,function() {
+                            $("#cont_com").css('display', '');
+                            $("#contenido [role=button]").css('display','');
+                        });
+                }
+                $("#comentario").val('');
+                $("#temporizador").html('');
+			}
+		});
+	}
+	
+    
+    
+    function conf_traslado()
+    {
+        if($("input[name='com_sel[]']:checked").length > 0) {
+            $("#error_seleccion").css("display", "none");
+            $("#modal_conf_traslado").modal("show");
+        }
+        else
+            $("#error_seleccion").css("display", "");
+    }
+    
+    
+    function realizar_traslado()
+    {
+        var id_hilo = $("#id_hilo").val();
+        if ((id_hilo=='') || (($.isNumeric(id_hilo)) && (id_hilo>0))) {
+            $("#modal_conf_traslado #error_id_hilo").css("display", "none");
+            if ($("#hilo").val()!='') {
+                $("#modal_conf_traslado #error_hilo").css("display", "none");
+                $("#titulo_hilo").val($("#hilo").val());
+                $("#id_hilo_ex").val(id_hilo);
+                var contenido = '<div class="alert alert-success">Realizando traslado de los comentarios....&nbsp;&nbsp<img alt="" height="31" width="31" src="https://www.epublibre.org/img/ajax.gif" /></div>';
+                $("#modal_conf_traslado .modal-body").html(contenido);
+                $("#modal_conf_traslado .modal-footer").css("display", "none");
+                $("#trasladar_com").submit();
+            }
+            else
+                $("#modal_conf_traslado #error_hilo").css("display", "");
+        }
+        else
+            $("#modal_conf_traslado #error_id_hilo").css("display", "");
+    }
+	
+</script>
+				
+				
+			</td>
+                            
+                <td class="banda-separacion"></td>
+                
+                <td class="mensajes">
+                                                    
+                             <div>  <div class="margen_b_5"> <div class="span4 titulo"> premios... <br> <span>Premios del título</span> </div> </div>   <div> <div class="span4 detalle"> <table> <tbody><tr> <td style="vertical-align:top;padding-top:3px;"> <div class="label"> 2012 </div> </td> <td class="txt_mediana pad_l negrita"> <a href="https://www.epublibre.org/premio/index/172">Prometheus</a> </td> </tr> </tbody></table> </div> </div>  <br> </div>                            
+
+                            
+                                    <div>
+
+        
+        <div class="margen_b_5">
+            <div class="span4 titulo">
+                Lecturas...
+                <br>
+                                    <span>1.245 usuarios lo están leyendo o lo han leído</span>
+                            </div>
+        </div>
+        
+
+        
+        <div>
+            <div class="span4 pad_similar txt_pequena">			
+                                                                                <div class="pull-left pad_min">
+                                <a id="stk" href="https://www.epublibre.org/usuario/detalle/1473" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="Hondo">
+                                        <div class="avatar50 borde-portada">
+                                    <img id="avatar50" src="ready-player-one_files/2VMsuxA.jpg" alt="">                                                        </div>
+                                </a>
+                        </div>
+                                                                                        <div class="pull-left pad_min">
+                                <a id="stk" href="https://www.epublibre.org/usuario/detalle/1160" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="mitrandir">
+                                        <div class="avatar50 borde-portada">
+                                    <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio_002.png" alt="">                                                        </div>
+                                </a>
+                        </div>
+                                                                                        <div class="pull-left pad_min">
+                                <a id="stk" href="https://www.epublibre.org/usuario/detalle/781" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="ludacato">
+                                        <div class="avatar50 borde-portada">
+                                    <img id="avatar50" src="ready-player-one_files/oUAhtWB.gif" alt="">                                                        </div>
+                                </a>
+                        </div>
+                                                                                        <div class="pull-left pad_min">
+                                <a id="stk" href="https://www.epublibre.org/usuario/detalle/3340" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="MaiD">
+                                        <div class="avatar50 borde-portada">
+                                    <img id="avatar50" src="ready-player-one_files/S3Jf983.jpg" alt="">                                                        </div>
+                                </a>
+                        </div>
+                                                                                        <div class="pull-left pad_min">
+                                <a id="stk" href="https://www.epublibre.org/usuario/detalle/911" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="aspe">
+                                        <div class="avatar50 borde-portada">
+                                    <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio_002.png" alt="">                                                        </div>
+                                </a>
+                        </div>
+                        <div style="clear:both;"></div>                                                                <div class="pull-left pad_min">
+                                <a id="stk" href="https://www.epublibre.org/usuario/detalle/1190" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="Ekritus">
+                                        <div class="avatar50 borde-portada">
+                                    <img id="avatar50" src="ready-player-one_files/NywmYGa.jpg" alt="">                                                        </div>
+                                </a>
+                        </div>
+                                                                                        <div class="pull-left pad_min">
+                                <a id="stk" href="https://www.epublibre.org/usuario/detalle/125" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="Eneashd">
+                                        <div class="avatar50 borde-portada">
+                                    <img id="avatar50" src="ready-player-one_files/5UagWW5.jpg" alt="">                                                        </div>
+                                </a>
+                        </div>
+                                                                                        <div class="pull-left pad_min">
+                                <a id="stk" href="https://www.epublibre.org/usuario/detalle/1001" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="frjanibo">
+                                        <div class="avatar50 borde-portada">
+                                    <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio_002.png" alt="">                                                        </div>
+                                </a>
+                        </div>
+                                                                                        <div class="pull-left pad_min">
+                                <a id="stk" href="https://www.epublibre.org/usuario/detalle/1439" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="Cupcake">
+                                        <div class="avatar50 borde-portada">
+                                    <img id="avatar50" src="ready-player-one_files/avCL_zps0ca07c37.gif" alt="">                                                        </div>
+                                </a>
+                        </div>
+                                                                                        <div class="pull-left pad_min">
+                                <a id="stk" href="https://www.epublibre.org/usuario/detalle/867" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="pvalle29">
+                                        <div class="avatar50 borde-portada">
+                                    <img id="avatar50" src="ready-player-one_files/mj9w11.jpg" alt="">                                                        </div>
+                                </a>
+                        </div>
+                        <div style="clear:both;"></div>                            </div>		
+        </div>
+        
+
+                    
+            <div class="margen_t_10 pad_l_10">
+                <div class="span4">
+                    <span>Los usuarios que leyeron este título también leyeron</span>
+                </div>
+            </div>
+            
+
+            
+            <div>
+                <div class="span4 pad_similar txt_pequena">			                 
+                                                                                                                <div id="aportes" class="pull-left pad_min2">
+                            <div class="borde-portada portada-aportes">
+                                <a id="stk" href="https://www.epublibre.org/libro/detalle/202" class="popover-libro" rel="popover" data-content="&lt;div class=&quot;txt_pequena&quot;&gt;&lt;div class=&quot;pull-right sprite idioma_1&quot;&gt;&lt;/div&gt;&lt;img class=&quot;sprite user_silhouette&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Haruki Murakami&lt;br/&gt;&lt;div class=&quot;row-fluid&quot;&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-revision&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 1.3&lt;/div&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-paginas&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 447&lt;/div&gt;&lt;div class=&quot;pull-left pop-puntuacion&quot;&gt;&lt;img class=&quot;sprite icon-star&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 8 (96)&lt;/div&gt;&lt;div class=&quot;pull-left&quot;&gt;&lt;img class=&quot;sprite icon-thumb-up&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 235&lt;/div&gt;&lt;/div&gt;" data-original-title="El fin del mundo y un despiadado país de las maravillas">
+                                    <div class="texto-portada">
+                                        <h2>Haruki Murakami<br></h2>
+                                        <h1>El fin del mundo y un despiadado país de las maravillas</h1>
+                                    </div>
+                                    <div class="portada-aportes">
+                                        <img id="aportes" src="ready-player-one_files/H0c75J0.jpg" alt="" width="84" height="126">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                                                                                                                        <div id="aportes" class="pull-left pad_min2">
+                            <div class="borde-portada portada-aportes">
+                                <a id="stk" href="https://www.epublibre.org/libro/detalle/1303" class="popover-libro" rel="popover" data-content="&lt;div class=&quot;txt_pequena&quot;&gt;&lt;div class=&quot;pull-right sprite idioma_1&quot;&gt;&lt;/div&gt;&lt;img class=&quot;sprite user_silhouette&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Mario Puzo&lt;br/&gt;&lt;div class=&quot;row-fluid&quot;&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-revision&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 1.6&lt;/div&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-paginas&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 439&lt;/div&gt;&lt;div class=&quot;pull-left pop-puntuacion&quot;&gt;&lt;img class=&quot;sprite icon-star&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 9 (362)&lt;/div&gt;&lt;div class=&quot;pull-left&quot;&gt;&lt;img class=&quot;sprite icon-thumb-up&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 441&lt;/div&gt;&lt;/div&gt;" data-original-title="El Padrino">
+                                    <div class="texto-portada">
+                                        <h2>Mario Puzo<br></h2>
+                                        <h1>El Padrino</h1>
+                                    </div>
+                                    <div class="portada-aportes">
+                                        <img id="aportes" src="ready-player-one_files/JXsHvk4.jpg" alt="" width="84" height="126">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                                                                                                                        <div id="aportes" class="pull-left pad_min2">
+                            <div class="borde-portada portada-aportes">
+                                <a id="stk" href="https://www.epublibre.org/libro/detalle/1913" class="popover-libro" rel="popover" data-content="&lt;div class=&quot;txt_pequena&quot;&gt;&lt;div class=&quot;pull-right sprite idioma_1&quot;&gt;&lt;/div&gt;&lt;img class=&quot;sprite user_silhouette&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Haruki Murakami&lt;br/&gt;&lt;div class=&quot;row-fluid&quot;&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-revision&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 1.6&lt;/div&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-paginas&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 525&lt;/div&gt;&lt;div class=&quot;pull-left pop-puntuacion&quot;&gt;&lt;img class=&quot;sprite icon-star&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 8 (211)&lt;/div&gt;&lt;div class=&quot;pull-left&quot;&gt;&lt;img class=&quot;sprite icon-thumb-up&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 352&lt;/div&gt;&lt;/div&gt;" data-original-title="Kafka en la orilla">
+                                    <div class="texto-portada">
+                                        <h2>Haruki Murakami<br></h2>
+                                        <h1>Kafka en la orilla</h1>
+                                    </div>
+                                    <div class="portada-aportes">
+                                        <img id="aportes" src="ready-player-one_files/0OlU81P.jpg" alt="" width="84" height="126">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                            <div style="clear:both;"></div>                                                                                            <div id="aportes" class="pull-left pad_min2">
+                            <div class="borde-portada portada-aportes">
+                                <a id="stk" href="https://www.epublibre.org/libro/detalle/5368" class="popover-libro" rel="popover" data-content="&lt;div class=&quot;txt_pequena&quot;&gt;&lt;div class=&quot;pull-right sprite idioma_1&quot;&gt;&lt;/div&gt;&lt;img class=&quot;sprite user_silhouette&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Paulo Coelho&lt;br/&gt;&lt;div class=&quot;row-fluid&quot;&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-revision&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 1.2&lt;/div&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-paginas&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 89&lt;/div&gt;&lt;div class=&quot;pull-left pop-puntuacion&quot;&gt;&lt;img class=&quot;sprite icon-star&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 7 (342)&lt;/div&gt;&lt;div class=&quot;pull-left&quot;&gt;&lt;img class=&quot;sprite icon-thumb-up&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 276&lt;/div&gt;&lt;/div&gt;" data-original-title="El alquimista">
+                                    <div class="texto-portada">
+                                        <h2>Paulo Coelho<br></h2>
+                                        <h1>El alquimista</h1>
+                                    </div>
+                                    <div class="portada-aportes">
+                                        <img id="aportes" src="ready-player-one_files/O4vz0Tc.jpg" alt="" width="84" height="126">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                                                                                                                        <div id="aportes" class="pull-left pad_min2">
+                            <div class="borde-portada portada-aportes">
+                                <a id="stk" href="https://www.epublibre.org/libro/detalle/1980" class="popover-libro" rel="popover" data-content="&lt;div class=&quot;txt_pequena&quot;&gt;&lt;div class=&quot;pull-right sprite idioma_1&quot;&gt;&lt;/div&gt;&lt;img class=&quot;sprite user_silhouette&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Roger Zelazny&lt;br/&gt;&lt;div class=&quot;row-fluid&quot;&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-revision&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 1.3&lt;/div&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-paginas&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 232&lt;/div&gt;&lt;div class=&quot;pull-left pop-puntuacion&quot;&gt;&lt;img class=&quot;sprite icon-star&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 9 (21)&lt;/div&gt;&lt;div class=&quot;pull-left&quot;&gt;&lt;img class=&quot;sprite icon-thumb-up&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 128&lt;/div&gt;&lt;/div&gt;" data-original-title="El señor de la luz">
+                                    <div class="texto-portada">
+                                        <h2>Roger Zelazny<br></h2>
+                                        <h1>El señor de la luz</h1>
+                                    </div>
+                                    <div class="portada-aportes">
+                                        <img id="aportes" src="ready-player-one_files/2CmVd3o.jpg" alt="" width="84" height="126">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                                                                                                                        <div id="aportes" class="pull-left pad_min2">
+                            <div class="borde-portada portada-aportes">
+                                <a id="stk" href="https://www.epublibre.org/libro/detalle/6025" class="popover-libro" rel="popover" data-content="&lt;div class=&quot;txt_pequena&quot;&gt;&lt;div class=&quot;pull-right sprite idioma_1&quot;&gt;&lt;/div&gt;&lt;img class=&quot;sprite user_silhouette&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; C. S. Lewis&lt;br/&gt;&lt;img class=&quot;sprite node-tree&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Las crónicas de Narnia [4]&lt;br/&gt;&lt;div class=&quot;row-fluid&quot;&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-revision&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 1.5&lt;/div&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-paginas&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 152&lt;/div&gt;&lt;div class=&quot;pull-left pop-puntuacion&quot;&gt;&lt;img class=&quot;sprite icon-star&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 8 (68)&lt;/div&gt;&lt;div class=&quot;pull-left&quot;&gt;&lt;img class=&quot;sprite icon-thumb-up&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 166&lt;/div&gt;&lt;/div&gt;" data-original-title="La silla de plata">
+                                    <div class="texto-portada">
+                                        <h2>C. S. Lewis<br></h2>
+                                        <h1>La silla de plata</h1>
+                                    </div>
+                                    <div class="portada-aportes">
+                                        <img id="aportes" src="ready-player-one_files/QhUcoly.jpg" alt="" width="84" height="126">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                            <div style="clear:both;"></div>                                    </div>
+            </div>
+            
+        
+        <br>
+    </div>
+                            
+
+                            
+                                    <div>
+
+        
+        <div class="margen_b_5">
+            <div class="span4 titulo">
+                Más títulos...
+                <br>
+                <span>Algunos títulos del mismo autor</span>
+            </div>
+        </div>
+        
+
+        
+        <div>
+            <div class="span4 pad_similar txt_pequena">			
+																		<div id="aportes" class="pull-left pad_min2">
+                        <div class="borde-portada portada-aportes">
+                            <a id="stk" href="https://www.epublibre.org/libro/detalle/6193" class="popover-libro" rel="popover" data-content="&lt;div class=&quot;txt_pequena&quot;&gt;&lt;div class=&quot;pull-right sprite idioma_5&quot;&gt;&lt;/div&gt;&lt;img class=&quot;sprite user_silhouette&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Ernest Cline&lt;br/&gt;&lt;div class=&quot;row-fluid&quot;&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-revision&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 1.5&lt;/div&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-paginas&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 380&lt;/div&gt;&lt;div class=&quot;pull-left pop-puntuacion&quot;&gt;&lt;img class=&quot;sprite icon-star&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 9 (41)&lt;/div&gt;&lt;div class=&quot;pull-left&quot;&gt;&lt;img class=&quot;sprite icon-thumb-up&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 103&lt;/div&gt;&lt;/div&gt;" data-original-title="Ready Player One">
+                                <div class="texto-portada">
+                                    <h2>Ernest Cline<br></h2>
+                                    <h1>Ready Player One</h1>
+                                </div>
+                                <div class="portada-aportes">
+                                    <img id="aportes" src="ready-player-one_files/7TJ9Fzb.jpg" alt="" width="84" height="126">
+                                </div>
+                            </a>
+                        </div>
+					</div>
+																			<div id="aportes" class="pull-left pad_min2">
+                        <div class="borde-portada portada-aportes">
+                            <a id="stk" href="https://www.epublibre.org/libro/detalle/28764" class="popover-libro" rel="popover" data-content="&lt;div class=&quot;txt_pequena&quot;&gt;&lt;div class=&quot;pull-right sprite idioma_1&quot;&gt;&lt;/div&gt;&lt;img class=&quot;sprite user_silhouette&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Ernest Cline&lt;br/&gt;&lt;img class=&quot;sprite node-tree&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; Nova [256]&lt;br/&gt;&lt;div class=&quot;row-fluid&quot;&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-revision&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 1.2&lt;/div&gt;&lt;div class=&quot;span3&quot;&gt;&lt;img class=&quot;sprite icon-paginas&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 327&lt;/div&gt;&lt;div class=&quot;pull-left pop-puntuacion&quot;&gt;&lt;img class=&quot;sprite icon-star&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 6 (73)&lt;/div&gt;&lt;div class=&quot;pull-left&quot;&gt;&lt;img class=&quot;sprite icon-thumb-up&quot; src=&quot;https://www.epublibre.org/img/vacio.png&quot; /&gt; 201&lt;/div&gt;&lt;/div&gt;" data-original-title="Armada">
+                                <div class="texto-portada">
+                                    <h2>Ernest Cline<br></h2>
+                                    <h1>Armada</h1>
+                                </div>
+                                <div class="portada-aportes">
+                                    <img id="aportes" src="ready-player-one_files/MpIhZKF.jpg" alt="" width="84" height="126">
+                                </div>
+                            </a>
+                        </div>
+					</div>
+									            </div>
+        </div>
+        
+        <br>
+    </div>
+                            
+
+                            
+                             <div>  <div class="margen_b_5"> <div class="span4 titulo"> Lo tienen... <br> <span>Otros usuarios que lo tienen en su biblioteca</span> </div> </div>   <div> <div class="span4 pad_similar txt_pequena"> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/3827" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="Luca"> <div class="avatar50 borde-portada"> <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio.png" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/1449" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="kisky84"> <div class="avatar50 borde-portada"> <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio.png" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/374" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="newclave"> <div class="avatar50 borde-portada"> <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio.png" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/2402" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="jnderblue"> <div class="avatar50 borde-portada"> <img id="avatar50" src="ready-player-one_files/EntgAXH.jpg" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/4589" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="IgnacioCortez"> <div class="avatar50 borde-portada"> <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio.png" alt=""> </div> </a> </div> <div style="clear:both;"></div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/7481" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="Marco91"> <div class="avatar50 borde-portada"> <img id="avatar50" src="ready-player-one_files/29ol3xw.jpeg" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/18" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="GONZALEZ"> <div class="avatar50 borde-portada"> <img id="avatar50" src="ready-player-one_files/2ICpGrA.gif" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/7041" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="esher"> <div class="avatar50 borde-portada"> <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio.png" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/2221" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="nume"> <div class="avatar50 borde-portada"> <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio.png" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/341" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="ferqui"> <div class="avatar50 borde-portada"> <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio.png" alt=""> </div> </a> </div> <div style="clear:both;"></div> </div> </div> <br>   <span class="pad_l_20">Y lo tienen en papel...</span> <div> <div class="span4 pad_similar txt_pequena"> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/98057" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="estfor90"> <div class="avatar50 borde-portada"> <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio.png" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/131807" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="tomyba"> <div class="avatar50 borde-portada"> <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio.png" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/139232" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="carmenyangu"> <div class="avatar50 borde-portada"> <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio.png" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/195344" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="carlonchum"> <div class="avatar50 borde-portada"> <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio.png" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/9828" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="Undolaure"> <div class="avatar50 borde-portada"> <img id="avatar50" src="ready-player-one_files/koenigin-luise106_v-image512_-6a0b0d9618fb94fd9ee05a84a1099.html" alt="" style="display: none;"> </div> </a> </div> <div style="clear:both;"></div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/43279" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="sitrizel"> <div class="avatar50 borde-portada"> <img id="avatar50" src="ready-player-one_files/y9FdwTM.jpg" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/156603" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="Parzival"> <div class="avatar50 borde-portada"> <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio.png" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/17252" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="david_mmoreno"> <div class="avatar50 borde-portada"> <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio.png" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/459" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="jascnet"> <div class="avatar50 borde-portada"> <img id="avatar50" src="ready-player-one_files/Obelix.jpg" alt=""> </div> </a> </div> <div class="pull-left pad_min"> <a id="stk" href="https://www.epublibre.org/usuario/detalle/136500" class="popover-usuario" rel="popover" data-content="&lt;div class=&quot;ali_centro txt_pequena&quot;&gt;Usuario&lt;/div&gt;" data-original-title="juance"> <div class="avatar50 borde-portada"> <img id="avatar50" class="sprite user-50" src="ready-player-one_files/vacio.png" alt=""> </div> </a> </div> <div style="clear:both;"></div> </div> </div> <br>  </div>                            
+                                        </td>
+            		</tr>
+	</tbody></table>
+</div></div>
+
+
+
+<script type="text/javascript">
+	
+    $('.popover-libro').popover({trigger:'hover',html:true,placement:'top'});
+    $('.popover-usuario').popover({
+          trigger: 'hover', html: true, placement:'top',
+          template: '<div class="popover popover-pequeno"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
+    });
+    $("[rel=tooltip1]").tooltip({'placement':'top'});
+    
+	
+	
+    $("img").error(function() {
+        $(this).css("display", "none");
+    });
+    
+	
+</script>
+			
+			
+			
+			<div class="row">
+	<div class="span12 foot">
+		<div>
+			<div class="pull-left pad negrita">
+				© 2013 - epublibre | proyecto scriptorium
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+</div>			
+			
+		</div>
+		
+		<script type="text/javascript">
+		
+			
+			$('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropagation(); });
+            
+			
+			
+			$("[rel=tooltip]").tooltip({'selector': '','placement':'top'});
+			
+			
+		</script>
+		
+    
+</body></html>
