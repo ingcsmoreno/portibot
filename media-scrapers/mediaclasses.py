@@ -8,6 +8,7 @@ class Libro:
     urlPortada : str = None
     def __init__ (self,titulo,paginas=None,publicado=None,sinopsis=None,urlDownload=None,urlPortada=None):
         self.titulo = titulo
+        self.paginas = paginas
         self.publicado = publicado
         self.sinopsis = sinopsis
         self.titulo = titulo
