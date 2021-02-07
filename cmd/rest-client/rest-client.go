@@ -69,6 +69,11 @@ func OrientDBQuery(dbAcc DBAccess, query string, pretty bool) (result string, st
 	return res.String(), resp.StatusCode(), resp.Status()
 }
 
+func getRandomBook(dbAcc DBAccess) (result string, statusCode int, status string) {
+
+	return OrientDBQuery(dbAcc, "select expand(getRandomRecord('Libro')) as resultado", true)
+}
+
 func main() {
 	log.Println("Iniciando prueba de REST Client...")
 
@@ -77,22 +82,23 @@ func main() {
 		user:     "admin",
 		password: "admin",
 		protocol: "http",
-		host:     "sibila.website",
+		//host:     "sibila.website",
+		host:     "localhost",
 		port:     "2480",
 		database: "portico",
 	}
 
-	result, statusCode, status := OrientDBQuery(acc, "select from Pelicula", true)
-	fmt.Println("Response Info (SELECT):")
+	result, statusCode, status := getRandomBook(acc)
+	fmt.Println("Response Info (getRandomLibro):")
 	fmt.Println(result)
 	fmt.Println(statusCode)
 	fmt.Println(status)
 
 	fmt.Println(strings.Repeat("=", 80))
 
-	result, statusCode, status = OrientDBQuery(acc, "match {class: Libro, as: l} return $elements", true)
+	/* result, statusCode, status = OrientDBQuery(acc, "match {class: Libro, as: l} return $elements", true)
 	fmt.Println("Response Info (MATCH):")
 	fmt.Println(result)
 	fmt.Println(statusCode)
-	fmt.Println(status)
+	fmt.Println(status) */
 }
