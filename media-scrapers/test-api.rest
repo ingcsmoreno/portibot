@@ -46,3 +46,17 @@ COMMIT;
 #     }
 #   ]
 # }
+
+###
+GET https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=martincasatti HTTP/1.1
+content-type: application/json
+Accept-Encoding: gzip,deflate
+Authorization: Bearer AAAAAAAAAAAAAAAAAAAAAJcxMgEAAAAA%2Bto2bOM%2Fj18K1aWXt%2FPkhuF%2FrDw%3DWMZDTwMA5RSQTaPa14f7TyUQevWO3kvsnl6GRCQleAHe1NzGuc
+
+###
+# Usando Bearer Token para API 2.0
+# BEARER TOKEN: AAAAAAAAAAAAAAAAAAAAAFntLAEAAAAARIy7WWhUCNjrkPz6BVs4eCEXzM8%3D0AyN7C2vAzd2MsUpjaDSxhXGb4JmCXxR2om6x1MWeyDN3S179N
+GET https://api.twitter.com/2/users/by?usernames=martincasatti&user.fields=description,created_at HTTP/1.1
+content-type: application/json
+Accept-Encoding: gzip,deflate
+Authorization: Bearer AAAAAAAAAAAAAAAAAAAAAFntLAEAAAAARIy7WWhUCNjrkPz6BVs4eCEXzM8%3D0AyN7C2vAzd2MsUpjaDSxhXGb4JmCXxR2om6x1MWeyDN3S179N

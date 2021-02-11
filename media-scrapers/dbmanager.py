@@ -115,3 +115,52 @@ class DBManager:
         data = {"transaction":True,"operations":operaciones}
         response = requests.post(self.batchURL,json=data,auth=HTTPBasicAuth(self.user, self.password))
         return response 
+
+    def insertTwitt (self, id : str, text : str, author_id : str, conversation_id : str, in_reply_to_user_id : str):
+        script = """
+    BEGIN; 
+    LET twitt = SELECT from Twitt where id = '{id}';
+    if ($twitt.size() = 0) {{
+        CREATE VERTEX Twitt SET
+        id = '{id}',
+        text = '{text}',
+        author_id = '{author_id}',
+        conversation_id = '{conversation_id}',
+        in_reply_to_user_id = '{in_reply_to_user_id}';
+    }}
+    COMMIT;"""
+        script = script.format(
+            id=id,
+            text=text,
+            author_id=author_id,
+            conversation_id=conversation_id,
+            in_reply_to_user_id=in_reply_to_user_id
+            )
+        operaciones = [{"type":"script","language":"sql","script":[script]}]
+        data = {"transaction":True,"operations":operaciones}
+        response = requests.post(self.batchURL,json=data,auth=HTTPBasicAuth(self.user, self.password))
+        return response 
+
+    def insertTwittRelation (self, id_source : str, id_destination : str, relation_type : str):
+        script = """
+    BEGIN; 
+    CREATE EDGE {tipo_edge} from (select from Twitt where id = '{id_source}') to (select from Twitt where id = '{id_destination}');
+    COMMIT;"""
+        if (relation_type == 'replied_to'):
+            tipo_edge = 'TwittReply'
+        elif (relation_type == 'quoted'):
+            tipo_edge = 'TwittCite'
+        elif (relation_type == 'retweeted'):
+            tipo_edge = 'TwittRetweet'
+        else:
+            tipo_edge = 'E'
+        script = script.format(
+            tipo_edge=tipo_edge,
+            id_source=id_source,
+            id_destination=id_destination
+            )
+        operaciones = [{"type":"script","language":"sql","script":[script]}]
+        data = {"transaction":True,"operations":operaciones}
+        response = requests.post(self.batchURL,json=data,auth=HTTPBasicAuth(self.user, self.password))
+        return response
+

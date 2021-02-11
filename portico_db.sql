@@ -62,19 +62,40 @@ create index Persona.nombre on Persona(nombre) unique;
 create index Genero.genero on Genero(genero) unique;
 create index Pelicula.titulo on Pelicula(titulo) unique;
 
-BEGIN;
-LET libro = SELECT from Libro where titulo = 'Tropas del Espacio';
-if ($libro.size() = 0) {
-	LET libro = CREATE VERTEX Libro SET titulo = 'Tropas del Espacio';
-}
-LET autor = SELECT from Autor where nombre = 'Robert Heinlein';
-if ($autor.size() = 0) {
-	LET autor = CREATE VERTEX Autor SET nombre = 'Robert Heinlein';
-}
+BEGIN; 
+LET libro = SELECT from Libro where titulo.toUpperCase() = '{titulolibro}'.toUpperCase();
+if ($libro.size() = 0) {{
+    LET libro = CREATE VERTEX Libro SET titulo = '{titulolibro}';
+}}
+LET autor = SELECT from Autor where nombre.toUpperCase() = '{nombreautor}'.toUpperCase();
+if ($autor.size() = 0) {{
+    LET autor = CREATE VERTEX Autor SET nombre = '{nombreautor}';
+}}
 LET autorDe = match
-				{class:Autor, as: a, where: (nombre = 'Robert Heinlein')}.out('autorDe') 
-				{class:Libro, as: l, where: (titulo = 'Tropas del Espacio')} return a;
-if ($autorDe.size() = 0) {
-	CREATE EDGE autorDe FROM $autor TO $libro RETRY 100;
-}
+        {{class:Autor, as: a, where: (nombre.toUpperCase() = '{nombreautor}'.toUpperCase())}}.out('autorDe') 
+        {{class:Libro, as: l, where: (titulo.toUpperCase() = '{titulolibro}'.toUpperCase())}} return a;
+if ($autorDe.size() = 0) {{
+    CREATE EDGE autorDe FROM $autor TO $libro RETRY 100;
+}}
+CREATE EDGE esGenero from $libro to (select from Genero where genero = 'Sci Fi');
 COMMIT;
+
+# Estructuras para la gestión de Tweets
+create class Twitt if not exists extends V;
+create property Twitt.id string (notnull true);
+create property Twitt.text string;
+create property Twitt.author_id string (notnull true);
+create property Twitt.author_name string;
+create property Twitt.conversation_id string;
+create property Twitt.in_reply_to_user_id string;
+
+# Crear algunas relaciones utiles
+create class TwittReply if not exists extends E;
+create class TwittRetweet if not exists extends E;
+create class TwittCite if not exists extends E;
+	
+/*
+Un modelo detallado de las entidades puede encontrarse en: 
+http://network.graphdemos.com/
+El modelo presente aquí es un MVP
+*/
