@@ -71,17 +71,22 @@ func generateTweetAnswer (dbAcc DBAccess, user string) (string, string)  {
         "Hola @%s! Que tal todo? Acá va algo de sci-fi", 
         "Claro que si @%s!", 
         "A la orden @%s!", 
-        "Hola @%s, que te pare esto?", 
+        "Hola @%s", 
         "@%s que bueno que preguntas.",
+        "Hay tanto de donde elegir @%s",
+        "@%s pide, Pórtico contesta",
+        "Pediste Sci-Fi @%s? No se diga mas",
     }
 
     middle := []string{
-        "Que te parece %s (%s)?", 
+        "que te parece %s (%s)?", 
         "%s (%s) es realmente genial!", 
-        "Definitivamente %s (%s) es de esas obras infaltables", 
+        "definitivamente %s (%s) es de esas obras infaltables", 
         "%s (%s), totalmente recomendable", 
-        "Que tal %s (%s)? Si no está en tu repertorio, debería.", 
-        "Segurísimo que mas de uno te recomendaría %s (%s), no vamos a ser la excepción XD",
+        "que tal %s (%s)? Si no está en tu repertorio, debería.", 
+        "segurísimo que mas de uno te recomendaría %s (%s), no vamos a ser la excepción XD",
+        "%s (%s) es de esas obras que no pueden faltar",
+        "te recomendamos %s (%s), es sobre... tiene eso que... en fin, te va a encantar.",
     }
     
     //recommendations := []string{
