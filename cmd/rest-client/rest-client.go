@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"net/url"
 	"path"
+	"strings"
 
 	"github.com/go-resty/resty/v2"
 	"github.com/tidwall/gjson"
@@ -47,7 +48,7 @@ Pero bueno. Todo rompen. Todo.
 
 // OrientDBQuery is Ejecuta una consulta en la base de datos, pasando usuario y contraseña y
 // devuelve el resultado en formato JSON
-func OrientDBQuery(dbAcc DBAccess, query string, pretty bool) (result string, statusCode int, status string) {
+func OrientDBQuery(dbAcc DBAccess, query string, pretty bool, rawjson bool) (result string, statusCode int, status string) {
 	// Create a Resty Client
 	client := resty.New()
 	urlQuery := url.URL{
@@ -63,27 +64,36 @@ func OrientDBQuery(dbAcc DBAccess, query string, pretty bool) (result string, st
 		Get(urlQuery.String())
 
 	//log.Println("Respuesta:\n", string(resp.Body()))
-
-	if pretty {
-		var prettyJSON bytes.Buffer
-		error := json.Indent(&prettyJSON, resp.Body(), "", "\t")
-		if error != nil {
-			log.Println("JSON parse error: ", error)
+	var res string
+	if !rawjson {
+		if pretty {
+			var prettyJSON bytes.Buffer
+			error := json.Indent(&prettyJSON, resp.Body(), "", "\t")
+			if error != nil {
+				log.Println("JSON parse error: ", error)
+			}
+			result = string(prettyJSON.Bytes())
+		} else {
+			result = string(resp.Body())
 		}
-		result = string(prettyJSON.Bytes())
+		// Antes de devolver result, extraer especificamente el campo 'result' que contiene los datos
+		// El otro campo es EXPLAIN que contiene el plan de ejecucion de la consulta.
+		res = gjson.Get(result, "result").String()
 	} else {
-		result = string(resp.Body())
+		res = string(resp.Body())
 	}
-	// Antes de devolver result, extraer especificamente el campo 'result' que contiene los datos
-	// El otro campo es EXPLAIN que contiene el plan de ejecucion de la consulta.
-	res := gjson.Get(result, "result")
 
-	return res.String(), resp.StatusCode(), resp.Status()
+	return res, resp.StatusCode(), resp.Status()
 }
 
 func getRandomBook(dbAcc DBAccess) (result string, statusCode int, status string) {
 
-	return OrientDBQuery(dbAcc, "select expand(getRandomRecord('Libro')) as resultado", true)
+	return OrientDBQuery(dbAcc, "select expand(getRandomRecord('Libro')) as resultado", true, false)
+}
+
+func getRandomBookWithAuthor(dbAcc DBAccess) (result string, statusCode int, status string) {
+
+	return OrientDBQuery(dbAcc, "select getRandomLibro() as resultado", true, false)
 }
 
 /*
@@ -223,17 +233,19 @@ func main() {
 		user:     "admin",
 		password: "admin",
 		protocol: "http",
-		//host:     "sibila.website",
-		host:     "localhost",
+		host:     "sibila.website",
+		//host:     "localhost",
 		port:     "2480",
 		database: "portico",
 	}
 
-	result, statusCode, status := insertTwittRelation(acc, "1359892733737984002", "1359889625582551041", "quoted")
-	fmt.Println("Response Info (insertTwittRelation):")
-	fmt.Println(result)
-	fmt.Println(statusCode)
-	fmt.Println(status)
+	/*
+		result, statusCode, status := insertTwittRelation(acc, "1359892733737984002", "1359889625582551041", "quoted")
+		fmt.Println("Response Info (insertTwittRelation):")
+		fmt.Println(result)
+		fmt.Println(statusCode)
+		fmt.Println(status)
+	*/
 	/*
 		t := Twitt{
 			Class:           "Twitt",
@@ -250,18 +262,25 @@ func main() {
 		fmt.Println(statusCode)
 		fmt.Println(status)
 	*/
-	/*
-		result, statusCode, status := getRandomBook(acc)
-		fmt.Println("Response Info (getRandomLibro):")
-		fmt.Println(result)
-		fmt.Println(statusCode)
-		fmt.Println(status)
 
-		fmt.Println(strings.Repeat("=", 80))
+	result, statusCode, status := getRandomBook(acc)
+	fmt.Println("Response Info (getRandomBook):")
+	fmt.Println(result)
+	fmt.Println(statusCode)
+	fmt.Println(status)
 
-		/* result, statusCode, status = OrientDBQuery(acc, "match {class: Libro, as: l} return $elements", true)
-		fmt.Println("Response Info (MATCH):")
-		fmt.Println(result)
-		fmt.Println(statusCode)
-		fmt.Println(status) */
+	fmt.Println(strings.Repeat("=", 80))
+
+	result, statusCode, status = getRandomBookWithAuthor(acc)
+	fmt.Println("Response Info (getRandomBookWithAuthor):")
+	fmt.Println(result)
+	fmt.Println(statusCode)
+	fmt.Println(status)
+
+	fmt.Println(strings.Repeat("=", 80))
+	/* result, statusCode, status = OrientDBQuery(acc, "match {class: Libro, as: l} return $elements", true)
+	fmt.Println("Response Info (MATCH):")
+	fmt.Println(result)
+	fmt.Println(statusCode)
+	fmt.Println(status) */
 }
