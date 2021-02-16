@@ -79,14 +79,14 @@ func generateTweetAnswer (dbAcc DBAccess, user string) (string, string)  {
     }
 
     middle := []string{
-        "que te parece %s (%s)?", 
-        "%s (%s) es realmente genial!", 
-        "definitivamente %s (%s) es de esas obras infaltables", 
-        "%s (%s), totalmente recomendable", 
-        "que tal %s (%s)? Si no está en tu repertorio, debería.", 
-        "segurísimo que mas de uno te recomendaría %s (%s), no vamos a ser la excepción XD",
-        "%s (%s) es de esas obras que no pueden faltar",
-        "te recomendamos %s (%s), es sobre... tiene eso que... en fin, te va a encantar.",
+        "que te parece %s (%s) de %s?", 
+        "%s (%s) de %s es realmente genial!", 
+        "definitivamente %s (%s) de %s es de esas obras infaltables", 
+        "%s (%s) de %s, totalmente recomendable", 
+        "que tal %s (%s) de %s? Si no está en tu repertorio, debería.", 
+        "segurísimo que mas de uno te recomendaría %s (%s) de %s, no vamos a ser la excepción XD",
+        "%s (%s) de %s es de esas obras que no pueden faltar",
+        "te recomendamos %s (%s) de %s, es sobre... tiene eso que... en fin, te va a encantar.",
     }
     
     //recommendations := []string{
@@ -101,7 +101,7 @@ func generateTweetAnswer (dbAcc DBAccess, user string) (string, string)  {
 
     result, _, _ := getRandomBook(dbAcc)
     
-    message := fmt.Sprintf(middle[rand.Intn(len(middle))], result.Titulo, strconv.Itoa(result.Publicado))
+    message := fmt.Sprintf(middle[rand.Intn(len(middle))], result.Titulo, strconv.Itoa(result.Publicado), result.Autor)
 
     //return fmt.Sprintf(initials[rand.Intn(len(initials))] + "\n\n" + recommendations[rand.Intn(len(recommendations))], user)
     return fmt.Sprintf(initials[rand.Intn(len(initials))] + "\n\n" + message , user), result.URLPortada
@@ -195,6 +195,7 @@ func main() {
 	    
         answer, mediaURL := generateTweetAnswer(acc, tweet.User.ScreenName)
 		log.Printf("Tweet Answer: %s\n", answer)
+        log.Printf("Tweet Pic: %s\n", mediaURL)
 	    tweetParams := &twitter.StatusUpdateParams{InReplyToStatusID: tweet.ID}
         
         image := getImage(mediaURL)
@@ -222,7 +223,7 @@ func main() {
             log.Printf("Statuses.Retweet error %v", err)
         }
         log.Printf("Retweet Status Code: %d\n\n", retweetResponse.StatusCode)
-
+  
         insertTwittRelation(acc, strconv.FormatInt(retweet.ID, 10), strconv.FormatInt(tweet.ID, 10), "retweeted")
         //_, retweetStatusCode, _ := insertTwittRelation(acc, strconv.FormatInt(retweet.ID, 10), strconv.FormatInt(tweet.ID, 10), "retweeted")
         //fmt.Println("Response Info (insertTwittRelation):")
