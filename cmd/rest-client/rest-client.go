@@ -10,7 +10,7 @@ import (
 	"net/http"
 	"net/url"
 	"path"
-	"strings"
+	"time"
 
 	"github.com/go-resty/resty/v2"
 	"github.com/tidwall/gjson"
@@ -37,6 +37,7 @@ type Twitt struct {
 	AuthorName      string `json:"author_name"`
 	ConversationID  string `json:"conversation_id"`
 	InReplyToUserID string `json:"in_reply_to_user_id"`
+	CreatedAt       string `json:"created_at"`
 }
 
 /*
@@ -190,6 +191,17 @@ func OrientDBBatch(dbAcc DBAccess, query string) (result string, statusCode int,
 }
 
 func insertTwitt(dbAcc DBAccess, t Twitt) (result string, statusCode int, status string) {
+	// SIEMPRE TIENE QUE TENER FECHA y HORA.
+	// SI NO SE PASA COMO PARTE DEL TWITT SE PONE FECHA Y HORA ACTUAL
+	// DE LA MAQUINA DONDE ESTA CORRIENDO EL BOT
+	// EL FORMATO DEL STRING ES: yyyy-mm-dd hh:mi:ss (sin milisegundos)
+	var datetime string
+	if t.CreatedAt != "" {
+		datetime = t.CreatedAt
+	} else {
+		ahora := time.Now()
+		datetime = ahora.Format("2006-01-02 15:04:05")
+	}
 	query := fmt.Sprintf(`
 	BEGIN; 
     LET twitt = SELECT from Twitt where id = '%s';
@@ -200,9 +212,10 @@ func insertTwitt(dbAcc DBAccess, t Twitt) (result string, statusCode int, status
         author_id = '%s',
 		author_name = '%s',
         conversation_id = '%s',
-        in_reply_to_user_id = '%s';
+        in_reply_to_user_id = '%s',
+		created_at = '%s';
     }
-    COMMIT;`, t.ID, t.ID, t.Text, t.AuthorID, t.AuthorName, t.ConversationID, t.InReplyToUserID)
+    COMMIT;`, t.ID, t.ID, t.Text, t.AuthorID, t.AuthorName, t.ConversationID, t.InReplyToUserID, datetime)
 	//fmt.Println(query)
 	return OrientDBBatch(dbAcc, query)
 }
@@ -246,38 +259,40 @@ func main() {
 		fmt.Println(statusCode)
 		fmt.Println(status)
 	*/
+
+	t := Twitt{
+		Class:           "Twitt",
+		ID:              "0",
+		Text:            "Prueba",
+		AuthorID:        "0117",
+		AuthorName:      "mcasatti",
+		ConversationID:  "001",
+		InReplyToUserID: "",
+		CreatedAt:       "",
+	}
+	result, statusCode, status := insertTwitt(acc, t)
+	fmt.Println("Response Info (insertTwitt):")
+	fmt.Println(result)
+	fmt.Println(statusCode)
+	fmt.Println(status)
+
 	/*
-		t := Twitt{
-			Class:           "Twitt",
-			ID:              "0",
-			Text:            "Prueba",
-			AuthorID:        "0117",
-			AuthorName:      "mcasatti",
-			ConversationID:  "001",
-			InReplyToUserID: ""}
-		//insertTwittDirect(acc, t)
-		result, statusCode, status := insertTwitt(acc, t)
-		fmt.Println("Response Info (insertTwitt):")
+		result, statusCode, status := getRandomBook(acc)
+		fmt.Println("Response Info (getRandomBook):")
 		fmt.Println(result)
 		fmt.Println(statusCode)
 		fmt.Println(status)
+
+		fmt.Println(strings.Repeat("=", 80))
+
+		result, statusCode, status = getRandomBookWithAuthor(acc)
+		fmt.Println("Response Info (getRandomBookWithAuthor):")
+		fmt.Println(result)
+		fmt.Println(statusCode)
+		fmt.Println(status)
+
+		fmt.Println(strings.Repeat("=", 80))
 	*/
-
-	result, statusCode, status := getRandomBook(acc)
-	fmt.Println("Response Info (getRandomBook):")
-	fmt.Println(result)
-	fmt.Println(statusCode)
-	fmt.Println(status)
-
-	fmt.Println(strings.Repeat("=", 80))
-
-	result, statusCode, status = getRandomBookWithAuthor(acc)
-	fmt.Println("Response Info (getRandomBookWithAuthor):")
-	fmt.Println(result)
-	fmt.Println(statusCode)
-	fmt.Println(status)
-
-	fmt.Println(strings.Repeat("=", 80))
 	/* result, statusCode, status = OrientDBQuery(acc, "match {class: Libro, as: l} return $elements", true)
 	fmt.Println("Response Info (MATCH):")
 	fmt.Println(result)
