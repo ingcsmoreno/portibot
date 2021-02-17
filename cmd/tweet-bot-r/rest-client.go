@@ -202,7 +202,7 @@ func insertTwitt(dbAcc DBAccess, t Twitt) (result string, statusCode int, status
         author_id = '%s',
         author_name = '%s',
         conversation_id = '%s',
-        in_reply_to_user_id = '%s';
+        in_reply_to_user_id = '%s',
         created_at = '%s';
     }
     COMMIT;`, t.ID, t.ID, t.Text, t.AuthorID, t.AuthorName, t.ConversationID, t.InReplyToUserID, t.CreatedAt)
