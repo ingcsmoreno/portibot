@@ -3,8 +3,8 @@ package main
 import (
     "fmt"
     "io/ioutil"
-	"log"
-	"os"
+    "log"
+    "os"
     "os/signal"
     "strconv"
     "strings"
@@ -147,19 +147,19 @@ func main() {
     log.Printf("Following hashtag '%s'\n", hashtag)
 
     params := &twitter.StreamFilterParams{
-	    Track: []string{hashtag},
+        Track: []string{hashtag},
         Language: []string{"es"},
-	    StallWarnings: twitter.Bool(true),
-	}
-	stream, err := client.Streams.Filter(params)
+        StallWarnings: twitter.Bool(true),
+    }
+    stream, err := client.Streams.Filter(params)
 
-	//params := &twitter.StreamSampleParams{
-	//    StallWarnings: twitter.Bool(true),
-	//}
-	//stream, err := client.Streams.Sample(params)
+    //params := &twitter.StreamSampleParams{
+    //    StallWarnings: twitter.Bool(true),
+    //}
+    //stream, err := client.Streams.Sample(params)
 
-	demux := twitter.NewSwitchDemux()
-	demux.Tweet = func(tweet *twitter.Tweet) {
+    demux := twitter.NewSwitchDemux()
+    demux.Tweet = func(tweet *twitter.Tweet) {
         // Avoid processing own tweets, retweets, 
         //  and quoted tweets without the hashtag
         if ( tweet.User.ScreenName == user.ScreenName ||
@@ -167,10 +167,10 @@ func main() {
              !strings.Contains(tweet.Text, hashtag)) { return }
 
         // Received tweet info
-	    log.Println("-----------------")
-	    log.Printf("Tweet ID: %d\n", tweet.ID)
-	    log.Printf("User: %s\n", tweet.User.ScreenName)
-	    log.Printf("Tweet Text: %s\n", tweet.Text)
+        log.Println("-----------------")
+        log.Printf("Tweet ID: %d\n", tweet.ID)
+        log.Printf("User: %s\n", tweet.User.ScreenName)
+        log.Printf("Tweet Text: %s\n", tweet.Text)
 
         receivedTweet := Twitt{
             Class:           "Twitt",
@@ -185,10 +185,10 @@ func main() {
         insertTwitt(acc, receivedTweet)
         
         // Tweet response text
-	    
+        
         answer, mediaURL := generateTweetAnswer(acc, tweet.User.ScreenName)
-		log.Printf("Tweet Answer: %s\n", answer)
-	    tweetParams := &twitter.StatusUpdateParams{InReplyToStatusID: tweet.ID}
+        log.Printf("Tweet Answer: %s\n", answer)
+        tweetParams := &twitter.StatusUpdateParams{InReplyToStatusID: tweet.ID}
         
         image := getImage(mediaURL)
         imgRes, _, imgErr := client.Media.Upload(image, "IMAGE")
@@ -199,9 +199,9 @@ func main() {
 
         // Responding tweet
         answerTweet, resp, err := client.Statuses.Update(answer, tweetParams)
-	    if err != nil {
-		    log.Printf("Statuses.Tweet error %v\n", err)
-		} else {
+        if err != nil {
+            log.Printf("Statuses.Tweet error %v\n", err)
+        } else {
             log.Printf("Tweet Status Code: %d\n", resp.StatusCode)
             insertTwittRelation(acc, strconv.FormatInt(answerTweet.ID, 10), strconv.FormatInt(tweet.ID, 10), "replied_to")
         }
@@ -216,16 +216,16 @@ func main() {
             insertTwittRelation(acc, strconv.FormatInt(retweet.ID, 10), strconv.FormatInt(tweet.ID, 10), "retweeted")
         }
   
-	}
+    }
 
-	go demux.HandleChan(stream.Messages)
+    go demux.HandleChan(stream.Messages)
 
-	// Wait for SIGINT and SIGTERM (HIT CTRL-C)
-	ch := make(chan os.Signal)
-	signal.Notify(ch, syscall.SIGINT, syscall.SIGTERM)
-	log.Println(<-ch)
-	
+    // Wait for SIGINT and SIGTERM (HIT CTRL-C)
+    ch := make(chan os.Signal)
+    signal.Notify(ch, syscall.SIGINT, syscall.SIGTERM)
+    log.Println(<-ch)
+    
     log.Println("Stream reading stoped")
-	stream.Stop()
+    stream.Stop()
 
 }
