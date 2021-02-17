@@ -9,7 +9,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
-	"path"
+	"path"	
 
 	"github.com/go-resty/resty/v2"
 	"github.com/tidwall/gjson"
@@ -36,6 +36,7 @@ type Twitt struct {
 	AuthorName      string `json:"author_name"`
 	ConversationID  string `json:"conversation_id"`
 	InReplyToUserID string `json:"in_reply_to_user_id"`
+	CreatedAt       string `json:"created_at"`
 }
 
 type Recommendation struct {
@@ -202,8 +203,9 @@ func insertTwitt(dbAcc DBAccess, t Twitt) (result string, statusCode int, status
 		author_name = '%s',
         conversation_id = '%s',
         in_reply_to_user_id = '%s';
+        created_at = '%s';
     }
-    COMMIT;`, t.ID, t.ID, t.Text, t.AuthorID, t.AuthorName, t.ConversationID, t.InReplyToUserID)
+    COMMIT;`, t.ID, t.ID, t.Text, t.AuthorID, t.AuthorName, t.ConversationID, t.InReplyToUserID, t.CreatedAt)
 	//fmt.Println(query)
 	return OrientDBBatch(dbAcc, query)
 }
