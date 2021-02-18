@@ -165,7 +165,11 @@ func main() {
         //  and quoted tweets without the hashtag
         if ( tweet.User.ScreenName == user.ScreenName ||
              tweet.RetweetedStatus != nil ||
-             !strings.Contains(strings.ToLower(tweet.Text), strings.ToLower(hashtag))) { return }
+             !strings.Contains(strings.ToLower(tweet.Text), strings.ToLower(hashtag))) { 
+                log.Printf("WARN Filtered tweet with text: %s\n",tweet.Text)
+                log.Println("-----------------")
+                return 
+            }
 
         // Received tweet info
         log.Printf("Tweet ID: %d\n", tweet.ID)
