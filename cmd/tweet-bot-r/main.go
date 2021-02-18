@@ -163,10 +163,18 @@ func main() {
     demux.Tweet = func(tweet *twitter.Tweet) {
         // Avoid processing own tweets, retweets, 
         //  and quoted tweets without the hashtag
+        tweetText := ""
+
+        if (tweet.Truncated) {
+            tweetText = tweet.ExtendedTweet.FullText
+        } else {
+            tweetText = tweet.Text
+        }
+
         if ( tweet.User.ScreenName == user.ScreenName ||
              tweet.RetweetedStatus != nil ||
-             !strings.Contains(strings.ToLower(tweet.Text), strings.ToLower(hashtag))) { 
-                log.Printf("WARN Filtered tweet with text: %s\n",tweet.Text)
+             !strings.Contains(strings.ToLower(tweetText), strings.ToLower(hashtag))) { 
+                log.Printf("WARN Filtered tweet with text: %s\n",tweetText)
                 log.Println("-----------------")
                 return 
             }
@@ -174,14 +182,14 @@ func main() {
         // Received tweet info
         log.Printf("Tweet ID: %d\n", tweet.ID)
         log.Printf("User: %s\n", tweet.User.ScreenName)
-        log.Printf("Tweet Text: %s\n", tweet.Text)
+        log.Printf("Tweet Text: %s\n", tweetText)
 
         tweetDate, _ := time.Parse("Mon Jan 2 15:04:05 -0700 2006", tweet.CreatedAt)
 
         receivedTweet := Twitt{
             Class:           "Twitt",
             ID:              strconv.FormatInt(tweet.ID, 10),
-            Text:            tweet.Text,
+            Text:            tweetText,
             AuthorID:        strconv.FormatInt(tweet.User.ID, 10),
             AuthorName:      tweet.User.ScreenName,
             ConversationID:  "", // Don't know which ID is this
