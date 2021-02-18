@@ -172,6 +172,8 @@ func main() {
         log.Printf("User: %s\n", tweet.User.ScreenName)
         log.Printf("Tweet Text: %s\n", tweet.Text)
 
+        tweetDate, _ := time.Parse("Mon Jan 2 15:04:05 -0700 2006", tweet.CreatedAt)
+
         receivedTweet := Twitt{
             Class:           "Twitt",
             ID:              strconv.FormatInt(tweet.ID, 10),
@@ -180,7 +182,7 @@ func main() {
             AuthorName:      tweet.User.ScreenName,
             ConversationID:  "", // Don't know which ID is this
             InReplyToUserID: strconv.FormatInt(tweet.InReplyToUserID, 10),
-            CreatedAt:       tweet.CreatedAt }
+            CreatedAt:       tweetDate.Format("2006-01-02 15:04:05") }
 
         insertTwitt(acc, receivedTweet)
         
