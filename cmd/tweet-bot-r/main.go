@@ -158,16 +158,16 @@ func main() {
     //}
     //stream, err := client.Streams.Sample(params)
 
+    log.Println("-----------------")
     demux := twitter.NewSwitchDemux()
     demux.Tweet = func(tweet *twitter.Tweet) {
         // Avoid processing own tweets, retweets, 
         //  and quoted tweets without the hashtag
         if ( tweet.User.ScreenName == user.ScreenName ||
              tweet.RetweetedStatus != nil ||
-             !strings.Contains(tweet.Text, hashtag)) { return }
+             !strings.Contains(strings.ToLower(tweet.Text), strings.ToLower(hashtag))) { return }
 
         // Received tweet info
-        log.Println("-----------------")
         log.Printf("Tweet ID: %d\n", tweet.ID)
         log.Printf("User: %s\n", tweet.User.ScreenName)
         log.Printf("Tweet Text: %s\n", tweet.Text)
@@ -217,6 +217,8 @@ func main() {
             log.Printf("Retweet Status Code: %d\n\n", retweetResponse.StatusCode)
             insertTwittRelation(acc, strconv.FormatInt(retweet.ID, 10), strconv.FormatInt(tweet.ID, 10), "retweeted")
         }
+
+        log.Println("-----------------")
   
     }
 
