@@ -71,14 +71,11 @@ func OrientDBQuery(dbAcc DBAccess, query string) (result string, statusCode int,
         Host:   dbAcc.host + ":" + dbAcc.port,
         Path:   path.Join("query", dbAcc.database, "sql", query),
     }
-    //log.Println("urlQuery:")
-    //log.Println(urlQuery.String())
+
     resp, _ := client.R().
         EnableTrace().
         SetBasicAuth(dbAcc.user, dbAcc.password).
         Get(urlQuery.String())
-
-    //log.Println("Respuesta:\n", string(resp.Body()))
 
     // Antes de devolver result, extraer especificamente el campo 'result' que contiene los datos
     // El otro campo es EXPLAIN que contiene el plan de ejecucion de la consulta.
@@ -107,22 +104,12 @@ func insertTwittDirect(dbAcc DBAccess, t Twitt) /*(result string, statusCode int
         Host:   dbAcc.host + ":" + dbAcc.port,
         Path:   path.Join("document", dbAcc.database),
     }
-    //jsonData := fmt.Sprintf(`{'@class' : 'Twitt','id' : '%s','text' : '%s','author_id' : '%s','author_name' : '%s','conversation_id' : '%s','in_reply_to_user_id' : '%s'}`,
-    //    t.id, t.text, t.author_id, t.author_name, t.conversation_id, t.in_reply_to_user_id)
-    //jsonData := []byte("{'@class' : 'Twitt','id' : '0'}")
 
     var jsonData []byte
     jsonData, err := json.Marshal(t)
     if err != nil {
         log.Println(err)
     }
-    //fmt.Println(string(jsonData))
-
-    //jsonData, err := json.Marshal(dbAcc)
-    //log.Println("urlPost:")
-    //log.Println(urlPost.String())
-    //log.Println("jsonData:")
-    //log.Println(jsonData)
 
     client := &http.Client{}
     // req, err := http.NewRequest("POST", "https://httpbin.org/post", bytes.NewBuffer(jsonData))
@@ -131,29 +118,13 @@ func insertTwittDirect(dbAcc DBAccess, t Twitt) /*(result string, statusCode int
     req.Header.Add("Accept-Encoding", "gzip,deflate")
     req.SetBasicAuth(dbAcc.user, dbAcc.password)
     resp, err := client.Do(req)
-    //resp, err := http.Post(urlPost.String(), "application/json; charset=utf-8", bytes.NewBuffer([]byte(jsonData)))
+    
     if err != nil {
         log.Fatalln(err)
     }
 
     defer resp.Body.Close()
-    //bodyBytes, _ := ioutil.ReadAll(resp.Body)
-
-    // Convert response body to string
-    //bodyString := string(bodyBytes)
-    //fmt.Println("API Response as String:\n" + bodyString)
-    /*
-        client := resty.New()
-        req := client.R().
-            EnableTrace().
-            SetHeader("Content-Type", "application/json").
-            SetBasicAuth(dbAcc.user, dbAcc.password).
-            SetBody(jsonData)
-        resp, _ := req.Post(urlPost.String())
-        log.Println("Request:\n", req.String())
-        log.Println("Response:\n", resp.String())
-    */
-    //return resp.String(), resp.StatusCode(), resp.Status()
+    
 }
 
 // OrientDBBatch is Ejecuta una batch de instrucciones en la base de datos, pasando usuario y contraseña y
@@ -174,10 +145,6 @@ func OrientDBBatch(dbAcc DBAccess, query string) (result string, statusCode int,
             "script" : ["%s"]
             }]
         }`, query)
-    //log.Println("urlQuery:")
-    //log.Println(urlBatch.String())
-    //log.Println("jsonData:")
-    //log.Println(jsonData)
 
     resp, _ := client.R().
         EnableTrace().
@@ -187,7 +154,12 @@ func OrientDBBatch(dbAcc DBAccess, query string) (result string, statusCode int,
         SetBody(jsonData).
         Post(urlBatch.String())
 
-    //log.Println("Respuesta:\n", string(resp.Body()))
+    if resp.StatusCode() != 200 {
+        log.Printf("WARN Something went wrong while running a ODB query")  
+        log.Printf("WARN Got the following status: %s (%d)\n", resp.Status(), resp.StatusCode())
+        log.Printf("WARN And the response was: %s\n", string(resp.Body()))
+    }
+
     return string(resp.Body()), resp.StatusCode(), resp.Status()
 }
 
