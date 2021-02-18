@@ -154,11 +154,11 @@ func OrientDBBatch(dbAcc DBAccess, query string) (result string, statusCode int,
         SetBody(jsonData).
         Post(urlBatch.String())
 
-    //if resp.StatusCode() != 200 {
+    if resp.StatusCode() != 200 {
         log.Printf("WARN Something went wrong while running a ODB query")  
         log.Printf("WARN Got the following status: %s (%d)\n", resp.Status(), resp.StatusCode())
         log.Printf("WARN And the response was: %s\n", string(resp.Body()))
-    //}
+    }
 
     return string(resp.Body()), resp.StatusCode(), resp.Status()
 }
