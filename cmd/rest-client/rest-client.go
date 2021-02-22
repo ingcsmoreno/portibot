@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"net/url"
 	"path"
+	"strings"
 	"time"
 
 	"github.com/go-resty/resty/v2"
@@ -95,6 +96,11 @@ func getRandomBook(dbAcc DBAccess) (result string, statusCode int, status string
 func getRandomBookWithAuthor(dbAcc DBAccess) (result string, statusCode int, status string) {
 
 	return OrientDBQuery(dbAcc, "select getRandomLibro() as resultado", true, false)
+}
+
+func getRandomMovie(dbAcc DBAccess) (result string, statusCode int, status string) {
+
+	return OrientDBQuery(dbAcc, "select getRandomMovie() as resultado", true, false)
 }
 
 /*
@@ -260,22 +266,23 @@ func main() {
 		fmt.Println(status)
 	*/
 
-	t := Twitt{
-		Class:           "Twitt",
-		ID:              "0",
-		Text:            "Prueba",
-		AuthorID:        "0117",
-		AuthorName:      "mcasatti",
-		ConversationID:  "001",
-		InReplyToUserID: "",
-		CreatedAt:       "",
-	}
-	result, statusCode, status := insertTwitt(acc, t)
-	fmt.Println("Response Info (insertTwitt):")
-	fmt.Println(result)
-	fmt.Println(statusCode)
-	fmt.Println(status)
-
+	/*
+		t := Twitt{
+			Class:           "Twitt",
+			ID:              "0",
+			Text:            "Prueba",
+			AuthorID:        "0117",
+			AuthorName:      "mcasatti",
+			ConversationID:  "001",
+			InReplyToUserID: "",
+			CreatedAt:       "",
+		}
+		result, statusCode, status := insertTwitt(acc, t)
+		fmt.Println("Response Info (insertTwitt):")
+		fmt.Println(result)
+		fmt.Println(statusCode)
+		fmt.Println(status)
+	*/
 	/*
 		result, statusCode, status := getRandomBook(acc)
 		fmt.Println("Response Info (getRandomBook):")
@@ -298,4 +305,12 @@ func main() {
 	fmt.Println(result)
 	fmt.Println(statusCode)
 	fmt.Println(status) */
+
+	result, statusCode, status := getRandomMovie(acc)
+	fmt.Println("Response Info (getRandomMovie):")
+	fmt.Println(result)
+	fmt.Println(statusCode)
+	fmt.Println(status)
+
+	fmt.Println(strings.Repeat("=", 80))
 }
