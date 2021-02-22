@@ -21,6 +21,8 @@ RUN CGO_ENABLED=0 go build -ldflags="-w -s -X main.sha1ver=${SHA1VER} -X main.bu
 
 FROM scratch
 
+LABEL maintainer="ingcsmoreno@gmail.com"
+
 # the timezone data:
 ENV ZONEINFO /zoneinfo.zip
 COPY --from=alpine /zoneinfo.zip /
