@@ -40,6 +40,29 @@ type Twitt struct {
 }
 
 type Recommendation struct {
+	DirectorAutor string 
+	Titulo        string 
+	Estreno       int    
+	URLMedia      string 
+}
+
+type MovieRecommendation struct {
+	Type       string `json:"@type"`
+	Version    int    `json:"@version"`
+	ImdbID     string `json:"imdb_id"`
+	Director   string `json:"director"`
+	Titulo     string `json:"titulo"`
+	Tagline    string `json:"tagline"`
+	ID         string `json:"id"`
+	Rid        string `json:"rid"`
+	Class      string `json:"class"`
+	Anio       int    `json:"anio"`
+	Argumento  string `json:"argumento"`
+	URLPoster  string `json:"urlPoster"`
+	FieldTypes string `json:"@fieldTypes"`
+}
+
+type BookRecommendation struct {
     Type        string `json:"@type"`
     Version     int    `json:"@version"`
     Paginas     int    `json:"paginas"`
@@ -89,10 +112,34 @@ func getRandomBook(dbAcc DBAccess) (result Recommendation, statusCode int, statu
     //dbResult, dbStatusCode, dbStatus := OrientDBQuery(dbAcc, "select expand(getRandomRecord('Libro')) as resultado")
     dbResult, dbStatusCode, dbStatus := OrientDBQuery(dbAcc, "select getRandomLibro() as resultado")
 
-    var recomm []Recommendation    
-    json.Unmarshal([]byte(dbResult), &recomm)
+    var bookRecomm []BookRecommendation    
+    json.Unmarshal([]byte(dbResult), &bookRecomm)
 
-    return recomm[0], dbStatusCode, dbStatus
+    recomm := Recommendation{
+    	DirectorAutor: bookRecomm[0].Autor,
+	    Titulo: bookRecomm[0].Titulo,
+	    Estreno: bookRecomm[0].Publicado,
+	    URLMedia: bookRecomm[0].URLPortada,
+	}
+
+    return recomm, dbStatusCode, dbStatus
+}
+
+func getRandomMovie(dbAcc DBAccess) (result Recommendation, statusCode int, status string) {
+
+	dbResult, dbStatusCode, dbStatus := OrientDBQuery(dbAcc, "select getRandomMovie() as resultado")
+
+    var movieRecomm []MovieRecommendation    
+    json.Unmarshal([]byte(dbResult), &movieRecomm)
+
+    recomm := Recommendation{
+    	DirectorAutor: movieRecomm[0].Director,
+	    Titulo: movieRecomm[0].Titulo,
+	    Estreno: movieRecomm[0].Anio,
+	    URLMedia: movieRecomm[0].URLPoster,
+	}
+
+    return recomm, dbStatusCode, dbStatus
 }
 
 /*

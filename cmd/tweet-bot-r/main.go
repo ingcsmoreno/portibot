@@ -64,9 +64,18 @@ func getClient(creds *Credentials) (*twitter.Client, *twitter.User, error) {
     return client, user, nil
 }
 
-func generateTweetAnswer (dbAcc DBAccess, user string) (string, string)  {
+func generateTweetAnswer (dbAcc DBAccess, user string, recommType string) (string, string)  {
     rand.Seed(time.Now().UnixNano())
     
+    recommTypes := map[string]func(DBAccess)(Recommendation, int, string) {
+      "book": getRandomBook,
+      "movie": getRandomMovie,
+    }
+    recommTypesStrings := []string{
+        "book", 
+        "movie",
+    }
+
     initials := []string{
         "Hola @%s! Listo para algo de sci-fi?", 
         "Hola @%s! Que tal todo? Acá va algo de sci-fi", 
@@ -90,12 +99,26 @@ func generateTweetAnswer (dbAcc DBAccess, user string) (string, string)  {
         "te recomendamos %s (%s) de %s, es sobre... tiene eso que... en fin, te va a encantar.",
     }
     
-    result, _, _ := getRandomBook(dbAcc)
+
+    var result Recommendation
+    doubtMsg := ""
+    if (recommType == "rand"){
+        result, _, _ = recommTypes[recommTypesStrings[rand.Intn(len(recommTypesStrings))]](dbAcc)
+        doubtMsg = "\nLibro o Película? Bueno, va una obra al azar..."
+    } else {
+        result, _, _ = recommTypes[recommType](dbAcc)
+    }
+
+    //result, _, _ := getRandomBook(dbAcc)
     
-    message := fmt.Sprintf(middle[rand.Intn(len(middle))], result.Titulo, strconv.Itoa(result.Publicado), result.Autor)
+    //movie_result, _, _ := getRandomMovie(dbAcc)
+
+    log.Printf("Movie: %s (%s) de %s", result.Titulo, result.Estreno, result.DirectorAutor)
+
+    message := fmt.Sprintf(middle[rand.Intn(len(middle))], result.Titulo, strconv.Itoa(result.Estreno), result.DirectorAutor)
 
     //return fmt.Sprintf(initials[rand.Intn(len(initials))] + "\n\n" + recommendations[rand.Intn(len(recommendations))], user)
-    return fmt.Sprintf(initials[rand.Intn(len(initials))] + "\n\n" + message , user), result.URLPortada
+    return fmt.Sprintf(initials[rand.Intn(len(initials))] + doubtMsg +"\n\n" + message , user), result.URLMedia
 }
 
 func getImage (imageURL string) []byte {
@@ -176,13 +199,37 @@ func main() {
              !strings.Contains(strings.ToLower(tweetText), strings.ToLower(hashtag))) { 
                 log.Printf("WARN Filtered tweet with text: %s\n",tweetText)
                 log.Println("-----------------")
-                return 
+                //return 
             }
 
         // Received tweet info
         log.Printf("Tweet ID: %d\n", tweet.ID)
         log.Printf("User: %s\n", tweet.User.ScreenName)
         log.Printf("Tweet Text: %s\n", tweetText)
+
+        // Analizing tweet
+        answertTweetType := ""
+        if ( strings.Contains(strings.ToLower(tweetText),"libro") ||
+             strings.Contains(strings.ToLower(tweetText),"libros")||
+             strings.Contains(strings.ToLower(tweetText),"leer")||
+             strings.Contains(strings.ToLower(tweetText),"lectura")||
+             strings.Contains(strings.ToLower(tweetText),"literatura")||
+             strings.Contains(strings.ToLower(tweetText),"revista")||
+             strings.Contains(strings.ToLower(tweetText),"revistas")) {
+                answertTweetType = "book"
+        } else if (strings.Contains(strings.ToLower(tweetText),"película") ||
+                   strings.Contains(strings.ToLower(tweetText),"películas")||
+                   strings.Contains(strings.ToLower(tweetText),"pelicula")||
+                   strings.Contains(strings.ToLower(tweetText),"peliculas")||
+                   strings.Contains(strings.ToLower(tweetText),"peli")||
+                   strings.Contains(strings.ToLower(tweetText),"cine")||
+                   strings.Contains(strings.ToLower(tweetText),"largometraje")||
+                   strings.Contains(strings.ToLower(tweetText),"ver")||
+                   strings.Contains(strings.ToLower(tweetText),"mirar")) {
+            answertTweetType = "movie"
+        }else {
+            answertTweetType = "rand"
+        }
 
         tweetDate, _ := time.Parse("Mon Jan 2 15:04:05 -0700 2006", tweet.CreatedAt)
 
@@ -200,7 +247,7 @@ func main() {
         
         // Tweet response text
         
-        answer, mediaURL := generateTweetAnswer(acc, tweet.User.ScreenName)
+        answer, mediaURL := generateTweetAnswer(acc, tweet.User.ScreenName, answertTweetType)
         log.Printf("Tweet Answer: %s\n", answer)
         tweetParams := &twitter.StatusUpdateParams{InReplyToStatusID: tweet.ID}
         
