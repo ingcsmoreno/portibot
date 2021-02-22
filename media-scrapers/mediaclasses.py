@@ -23,22 +23,44 @@ class Autor:
         self.urlEpubLibre = urlEpubLibre
 
 class Pelicula:
-    pass
+    titulo : str = None
+    anio : str = None
+    argumento : str = None
+    id : str = None
+    imdb_id : str = None
+    tagline : str = None
+    urlPoster : str = None
+    def __init__ (self,titulo,id,anio=None,argumento=None,tagline=None,imdb_id=None,urlPoster=None):
+        self.titulo = titulo
+        self.id = id
+        self.anio = anio
+        self.argumento = argumento
+        self.tagline = tagline
+        self.imdb_id = imdb_id
+        self.urlPoster = urlPoster
 
 class Actor:
-    pass
+    nombre : str = None
+    personaje : str = None
+    def __init__ (self,nombre,personaje:str=None):
+        self.nombre = nombre
+        self.personaje = personaje
 
 class Cita:
     pass
 
 class Director:
-    pass
+    nombre : str = None
+    def __init__ (self,nombre):
+        self.nombre = nombre
 
 class Genero:
     pass
 
 class Personaje:
-    pass
+    nombre : str = None
+    def __init__ (self,nombre):
+        self.nombre = nombre
 
 class Serie:
     pass

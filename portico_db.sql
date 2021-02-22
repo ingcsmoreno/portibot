@@ -28,6 +28,7 @@ create class inspiroA extends E;	# Obra que inspiró a otra
 create class autorDe extends E;		# Autor de (libro)
 create class directorDe extends E;	# Director de (pelicula)
 create class tieneCita extends E;	# Una entidad (libro,pelicula,serie,personaje,etc) tiene una cita asociada
+create class interpretoA extends E; # Un Actor interpretó a un Personaje
 
 # Comenzar a crear las propiedades de las clases
 # PERSONA
@@ -47,6 +48,11 @@ create property Personaje.nombre string (notnull true);
 # PELICULA
 create property Pelicula.titulo string (notnull true);
 create property Pelicula.anio integer;
+create property Pelicula.urlPoster string;
+create property Pelicula.id string;
+create property Pelicula.imdb_id string;
+create property Pelicula.argumento string;
+create property Pelicula.tagline string;
 
 # LIBRO
 create property Libro.titulo string (notnull true);

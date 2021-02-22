@@ -164,3 +164,121 @@ class DBManager:
         response = requests.post(self.batchURL,json=data,auth=HTTPBasicAuth(self.user, self.password))
         return response
 
+    def insertMovie (self, movie : Pelicula):
+        '''Inserta una pelicula
+        '''
+        script = """
+    LET movie = SELECT from Pelicula where id = '{id}';
+    if ($movie.size() = 0) {{
+        LET movie = CREATE VERTEX Pelicula 
+        SET titulo = '{titulopelicula}',
+            id = '{id}',
+            imdb_id = '{imdb_id}',
+            anio = '{anio}',
+            argumento = '{argumento}',
+            tagline = '{tagline}',
+            urlPoster = '{urlPoster}';
+        CREATE EDGE esGenero from $movie to (select from Genero where genero = 'Sci Fi');
+    }}"""
+        script = script.format(
+            id=movie.id,
+            titulopelicula=movie.titulo.replace("'","`"),
+            imdb_id=movie.imdb_id,
+            anio=movie.anio,
+            argumento=movie.argumento.replace("'","`"),
+            tagline=movie.tagline.replace("'","`"),
+            urlPoster=movie.urlPoster
+            )
+        operaciones = [{"type":"script","language":"sql","script":[script]}]
+        data = {"transaction":True,"operations":operaciones}
+        response = requests.post(self.batchURL,json=data,auth=HTTPBasicAuth(self.user, self.password))
+        return response
+
+    def insertDirector (self, movie : Pelicula, director : Director):
+        '''Inserta un director, y lo asocia a la película
+        '''
+        script = """BEGIN;
+        LET movie = SELECT from Pelicula where id = '{idmovie}';
+        if ($movie.size() > 0) {{
+            LET director = SELECT from Director where nombre.toUpperCase() = '{nombredirector}'.toUpperCase();
+            if ($director.size() = 0) {{
+                LET director = CREATE VERTEX Director SET nombre = '{nombredirector}';
+            }}
+            LET directorDe = match
+                    {{class:Director, as: d, where: (nombre.toUpperCase() = '{nombredirector}'.toUpperCase())}}.out('directorDe') 
+                    {{class:Pelicula, as: p, where: (id = '{idmovie}')}} return a;
+            if ($directorDe.size() = 0) {{
+                CREATE EDGE directorDe FROM $director TO $movie RETRY 100;
+            }}
+        }}
+        COMMIT;"""
+        script = script.format(
+            idmovie=movie.id,
+            nombredirector=director.nombre
+            )
+        operaciones = [{"type":"script","language":"sql","script":[script]}]
+        data = {"transaction":True,"operations":operaciones}
+        response = requests.post(self.batchURL,json=data,auth=HTTPBasicAuth(self.user, self.password))
+        return response
+
+    def insertActoresPersonajes (self, movie : Pelicula, actores : list):
+        '''Inserta una pelicula
+        '''
+        script_base = """BEGIN;
+        LET movie = SELECT from Pelicula where id = '{idmovie}';
+        if ($movie.size() > 0) {{
+            LET actor = SELECT from Actor where nombre.toUpperCase() = '{nombreactor}'.toUpperCase();
+            if ($actor.size() = 0) {{
+                LET actor = CREATE VERTEX Actor SET nombre = '{nombreactor}';
+            }}
+            LET actuoEn = match
+                    {{class:Actor, as: a, where: (nombre.toUpperCase() = '{nombreactor}'.toUpperCase())}}.out('actuoEn') 
+                    {{class:Pelicula, as: p, where: (id = '{idmovie}')}} return a;
+            if ($actuoEn.size() = 0) {{
+                CREATE EDGE actuoEn FROM $actor TO $movie RETRY 100;
+            }}
+            
+            LET personaje = SELECT from Personaje where nombre.toUpperCase() = '{nombrepersonaje}'.toUpperCase();
+            if ($personaje.size() = 0) {{
+                LET personaje = CREATE VERTEX Personaje SET nombre = '{nombrepersonaje}';
+            }}
+            LET apareceEn = match
+                    {{class:Personaje, as: p, where: (nombre.toUpperCase() = '{nombrepersonaje}'.toUpperCase())}}.out('apareceEn') 
+                    {{class:Pelicula, as: m, where: (id = '{idmovie}')}} return a;
+            if ($apareceEn.size() = 0) {{
+                CREATE EDGE apareceEn FROM $personaje TO $movie RETRY 100;
+            }}
+
+            LET interpretoA = match
+                    {{class:Actor, as: a, where: (nombre.toUpperCase() = '{nombreactor}'.toUpperCase())}}.out('interpretoA') 
+                    {{class:Personaje, as: p, where: (nombre.toUpperCase() = '{nombrepersonaje}'.toUpperCase())}} return a;
+            if ($interpretoA.size() = 0) {{
+                CREATE EDGE interpretoA FROM $actor TO $personaje RETRY 100;
+            }}
+        }}
+        COMMIT;"""
+
+        for actor in actores:
+            script = script_base.format(
+                idmovie=movie.id,
+                nombreactor=actor.nombre,
+                nombrepersonaje=actor.personaje
+                )
+            operaciones = [{"type":"script","language":"sql","script":[script]}]
+            data = {"transaction":True,"operations":operaciones}
+            response = requests.post(self.batchURL,json=data,auth=HTTPBasicAuth(self.user, self.password))
+            if (not response.ok):
+                break
+        return response
+
+    def insertMovieFull (self, movie: Pelicula, director : Director, actores : list):
+        '''Inserta una pelicula completa con director y actores/personajes
+        '''
+        result1 = self.insertMovie(movie=movie)
+        result2 = self.insertDirector(movie=movie,director=director)
+        result3 = self.insertActoresPersonajes(movie=movie,actores=actores)
+        if (result1.ok and result2.ok and result3.ok):
+            return True
+        else:
+            return False
+    
