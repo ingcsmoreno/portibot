@@ -199,7 +199,7 @@ func main() {
              !strings.Contains(strings.ToLower(tweetText), strings.ToLower(hashtag))) { 
                 log.Printf("WARN Filtered tweet with text: %s\n",tweetText)
                 log.Println("-----------------")
-                //return 
+                return 
             }
 
         // Received tweet info
@@ -216,6 +216,7 @@ func main() {
              strings.Contains(strings.ToLower(tweetText),"literatura")||
              strings.Contains(strings.ToLower(tweetText),"revista")||
              strings.Contains(strings.ToLower(tweetText),"revistas")) {
+                log.Println("Asked for: Book")
                 answertTweetType = "book"
         } else if (strings.Contains(strings.ToLower(tweetText),"película") ||
                    strings.Contains(strings.ToLower(tweetText),"películas")||
@@ -226,8 +227,10 @@ func main() {
                    strings.Contains(strings.ToLower(tweetText),"largometraje")||
                    strings.Contains(strings.ToLower(tweetText),"ver")||
                    strings.Contains(strings.ToLower(tweetText),"mirar")) {
+            log.Println("Asked for: Movie")
             answertTweetType = "movie"
         }else {
+            log.Println("Asked for: Unkown")
             answertTweetType = "rand"
         }
 
