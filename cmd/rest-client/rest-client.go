@@ -103,6 +103,44 @@ func getRandomMovie(dbAcc DBAccess) (result string, statusCode int, status strin
 	return OrientDBQuery(dbAcc, "select getRandomMovie() as resultado", true, false)
 }
 
+func getImageURL() (result string, statusCode int, status string) {
+	const TheMovieDbAPIKey = "api_key=e74c8efbe10ffa1db948010a986c9ba8"
+	var urlQuery = "https://api.themoviedb.org/3/configuration?" + TheMovieDbAPIKey
+	client := resty.New()
+	resp, _ := client.R().
+		EnableTrace().
+		Get(urlQuery)
+	fmt.Println(urlQuery)
+	//fmt.Println(resp.Body())
+	var prettyJSON bytes.Buffer
+	error := json.Indent(&prettyJSON, resp.Body(), "", "\t")
+	if error != nil {
+		log.Println("JSON parse error: ", error)
+	}
+	result = string(prettyJSON.Bytes())
+	res := gjson.Get(result, "images.secure_base_url").String() + "original"
+	return res, resp.StatusCode(), resp.Status()
+}
+
+func getMovieProviders(movieID string) (result string, statusCode int, status string) {
+	const TheMovieDbAPIKey = "api_key=e74c8efbe10ffa1db948010a986c9ba8"
+	var urlQuery = "https://api.themoviedb.org/3/movie/" + movieID + "/watch/providers?" + TheMovieDbAPIKey + "&language=es"
+	client := resty.New()
+	resp, _ := client.R().
+		EnableTrace().
+		Get(urlQuery)
+	fmt.Println(urlQuery)
+	//fmt.Println(resp.Body())
+	var prettyJSON bytes.Buffer
+	error := json.Indent(&prettyJSON, resp.Body(), "", "\t")
+	if error != nil {
+		log.Println("JSON parse error: ", error)
+	}
+	result = string(prettyJSON.Bytes())
+	res := gjson.Get(result, "results.AR").String()
+	return res, resp.StatusCode(), resp.Status()
+}
+
 /*
 Deprecated: Función utilizada solamente para depuración y pruebas
 */
@@ -248,16 +286,17 @@ func main() {
 	log.Println("Iniciando prueba de REST Client...")
 
 	// Estructura con los parámetros fijos de acceso al servidor
-	acc := DBAccess{
-		user:     "admin",
-		password: "admin",
-		protocol: "http",
-		host:     "sibila.website",
-		//host:     "localhost",
-		port:     "2480",
-		database: "portico",
-	}
-
+	/*
+		acc := DBAccess{
+			user:     "admin",
+			password: "admin",
+			protocol: "http",
+			host:     "sibila.website",
+			//host:     "localhost",
+			port:     "2480",
+			database: "portico",
+		}
+	*/
 	/*
 		result, statusCode, status := insertTwittRelation(acc, "1359892733737984002", "1359889625582551041", "quoted")
 		fmt.Println("Response Info (insertTwittRelation):")
@@ -305,12 +344,23 @@ func main() {
 	fmt.Println(result)
 	fmt.Println(statusCode)
 	fmt.Println(status) */
-
-	result, statusCode, status := getRandomMovie(acc)
-	fmt.Println("Response Info (getRandomMovie):")
+	/*
+		result, statusCode, status := getRandomMovie(acc)
+		fmt.Println("Response Info (getRandomMovie):")
+		fmt.Println(result)
+		fmt.Println(statusCode)
+		fmt.Println(status)
+	*/
+	result, statusCode, status := getMovieProviders("76341")
+	fmt.Println("Response Info (getMovieProviders):")
 	fmt.Println(result)
 	fmt.Println(statusCode)
 	fmt.Println(status)
-
+	fmt.Println(strings.Repeat("=", 80))
+	result, statusCode, status = getImageURL()
+	fmt.Println("Response Info (getImageURL):")
+	fmt.Println(result)
+	fmt.Println(statusCode)
+	fmt.Println(status)
 	fmt.Println(strings.Repeat("=", 80))
 }

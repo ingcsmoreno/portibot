@@ -16,3 +16,5 @@
 
 ignore.md
 media-scrapers/__pycache__/
+
+media-scrapers/scrapping.log
