@@ -54,6 +54,15 @@ create property Pelicula.imdb_id string;
 create property Pelicula.argumento string;
 create property Pelicula.tagline string;
 
+# SERIE
+create property Serie.titulo string (notnull true);
+create property Serie.anio integer;
+create property Serie.urlPoster string;
+create property Serie.id string;
+create property Serie.imdb_id string;
+create property Serie.argumento string;
+create property Serie.tagline string;
+
 # LIBRO
 create property Libro.titulo string (notnull true);
 create property Libro.publicado integer;

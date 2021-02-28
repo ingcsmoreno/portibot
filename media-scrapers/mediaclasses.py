@@ -39,6 +39,25 @@ class Pelicula:
         self.imdb_id = imdb_id
         self.urlPoster = urlPoster
 
+class Serie:
+    titulo : str = None
+    anio : str = None
+    argumento : str = None
+    id : str = None
+    imdb_id : str = None
+    tagline : str = None
+    urlPoster : str = None
+    def __init__ (self,titulo,id,anio=None,argumento=None,tagline=None,imdb_id=None,urlPoster=None):
+        self.titulo = titulo
+        self.id = id
+        self.anio = anio
+        self.argumento = argumento
+        self.tagline = tagline
+        self.imdb_id = imdb_id
+        self.urlPoster = urlPoster
+
+# TODO: Posiblemente película y serie deban heredar de una clase comun
+
 class Actor:
     nombre : str = None
     personaje : str = None
@@ -62,6 +81,4 @@ class Personaje:
     def __init__ (self,nombre):
         self.nombre = nombre
 
-class Serie:
-    pass
 
